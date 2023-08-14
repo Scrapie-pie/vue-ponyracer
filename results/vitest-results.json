@@ -1,14 +1,14 @@
 {
-  "numTotalTestSuites": 4,
-  "numPassedTestSuites": 4,
+  "numTotalTestSuites": 6,
+  "numPassedTestSuites": 6,
   "numFailedTestSuites": 0,
   "numPendingTestSuites": 0,
-  "numTotalTests": 3,
-  "numPassedTests": 3,
+  "numTotalTests": 5,
+  "numPassedTests": 5,
   "numFailedTests": 0,
   "numPendingTests": 0,
   "numTodoTests": 0,
-  "startTime": 1692000043412,
+  "startTime": 1692002058348,
   "success": true,
   "testResults": [
     {
@@ -21,7 +21,7 @@
           "fullName": " App.vue renders a title",
           "status": "passed",
           "title": "renders a title",
-          "duration": 28,
+          "duration": 32,
           "failureMessages": []
         },
         {
@@ -32,12 +32,23 @@
           "fullName": " App.vue renders the navbar",
           "status": "passed",
           "title": "renders the navbar",
-          "duration": 4,
+          "duration": 7,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "App.vue"
+          ],
+          "fullName": " App.vue renders the races list",
+          "status": "passed",
+          "title": "renders the races list",
+          "duration": 8,
           "failureMessages": []
         }
       ],
-      "startTime": 1692000044895,
-      "endTime": 1692000044927,
+      "startTime": 1692002059866,
+      "endTime": 1692002059913,
       "status": "passed",
       "message": "",
       "name": "D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/__tests__/App.spec.ts"
@@ -52,15 +63,35 @@
           "fullName": " Navbar.vue should toggle the class on click",
           "status": "passed",
           "title": "should toggle the class on click",
-          "duration": 30,
+          "duration": 33,
           "failureMessages": []
         }
       ],
-      "startTime": 1692000044894,
-      "endTime": 1692000044924,
+      "startTime": 1692002059862,
+      "endTime": 1692002059895,
       "status": "passed",
       "message": "",
       "name": "D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/components/__tests__/Navbar.spec.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "",
+            "Races.vue"
+          ],
+          "fullName": " Races.vue should display every race name in a title",
+          "status": "passed",
+          "title": "should display every race name in a title",
+          "duration": 24,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1692002059862,
+      "endTime": 1692002059886,
+      "status": "passed",
+      "message": "",
+      "name": "D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/views/__tests__/Races.spec.ts"
     }
   ]
 }
