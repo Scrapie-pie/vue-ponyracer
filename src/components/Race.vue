@@ -10,29 +10,14 @@
   </div>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent, PropType } from 'vue';
+<script setup lang="ts">
+import { computed } from 'vue';
 import { RaceModel } from '@/models/RaceModel';
 import fromNow from '@/utils/FromNow';
 import Pony from '@/components/Pony.vue';
 
-export default defineComponent({
-  name: 'Race',
-
-  components: {
-    Pony
-  },
-
-  props: {
-    raceModel: {
-      type: Object as PropType<RaceModel>,
-      required: true
-    }
-  },
-
-  setup(props) {
-    const startInstant = computed(() => fromNow(props.raceModel.startInstant));
-    return { startInstant };
-  }
-});
+const props = defineProps<{
+  raceModel: RaceModel;
+}>();
+const startInstant = computed(() => fromNow(props.raceModel.startInstant));
 </script>

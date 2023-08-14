@@ -14,6 +14,7 @@ module.exports = {
     '@typescript-eslint/no-non-null-assertion': 'off',
     'vue/attributes-order': 'off',
     'vue/attribute-hyphenation': ['error', 'never'],
+    'vue/component-api-style': ['error', ['script-setup']],
     'vue/multi-word-component-names': 'off',
     'vue/v-on-event-hyphenation': 'off',
     // TODO re-enable when https://github.com/vuejs/eslint-plugin-vue/issues/2126 is fixed

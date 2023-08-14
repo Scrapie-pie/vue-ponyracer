@@ -5,34 +5,23 @@
   </figure>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent, PropType } from 'vue';
+<script setup lang="ts">
+import { computed } from 'vue';
 import { PonyModel } from '@/models/PonyModel';
 
-export default defineComponent({
-  name: 'Pony',
+const props = defineProps<{
+  ponyModel: PonyModel;
+}>();
 
-  props: {
-    ponyModel: {
-      type: Object as PropType<PonyModel>,
-      required: true
-    }
-  },
+const emit = defineEmits<{
+  ponySelected: [];
+}>();
 
-  emits: {
-    ponySelected: () => true
-  },
+const clicked = () => {
+  emit('ponySelected');
+};
 
-  setup(props, { emit }) {
-    const ponyImageUrl = computed(() => `/images/pony-${props.ponyModel.color.toLowerCase()}.gif`);
-
-    function clicked() {
-      emit('ponySelected');
-    }
-
-    return { ponyImageUrl, clicked };
-  }
-});
+const ponyImageUrl = computed(() => `/images/pony-${props.ponyModel.color.toLowerCase()}.gif`);
 </script>
 
 <style scoped>
