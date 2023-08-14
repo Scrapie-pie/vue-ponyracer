@@ -3,12 +3,12 @@
   "numPassedTestSuites": 14,
   "numFailedTestSuites": 0,
   "numPendingTestSuites": 0,
-  "numTotalTests": 10,
-  "numPassedTests": 10,
+  "numTotalTests": 11,
+  "numPassedTests": 11,
   "numFailedTests": 0,
   "numPendingTests": 0,
   "numTodoTests": 0,
-  "startTime": 1692012976799,
+  "startTime": 1692017844951,
   "success": true,
   "testResults": [
     {
@@ -21,7 +21,7 @@
           "fullName": " App.vue renders a title",
           "status": "passed",
           "title": "renders a title",
-          "duration": 13,
+          "duration": 83,
           "failureMessages": []
         },
         {
@@ -32,7 +32,7 @@
           "fullName": " App.vue renders the navbar",
           "status": "passed",
           "title": "renders the navbar",
-          "duration": 14,
+          "duration": 7,
           "failureMessages": []
         },
         {
@@ -43,12 +43,12 @@
           "fullName": " App.vue renders the races list",
           "status": "passed",
           "title": "renders the races list",
-          "duration": 39,
+          "duration": 8,
           "failureMessages": []
         }
       ],
-      "startTime": 1692012979189,
-      "endTime": 1692012979255,
+      "startTime": 1692017847369,
+      "endTime": 1692017847468,
       "status": "passed",
       "message": "",
       "name": "D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/__tests__/App.spec.ts"
@@ -63,12 +63,12 @@
           "fullName": " Navbar.vue should toggle the class on click",
           "status": "passed",
           "title": "should toggle the class on click",
-          "duration": 43,
+          "duration": 56,
           "failureMessages": []
         }
       ],
-      "startTime": 1692012978899,
-      "endTime": 1692012978942,
+      "startTime": 1692017847034,
+      "endTime": 1692017847090,
       "status": "passed",
       "message": "",
       "name": "D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/components/__tests__/Navbar.spec.ts"
@@ -83,7 +83,7 @@
           "fullName": " Pony.vue should display an image and a legend",
           "status": "passed",
           "title": "should display an image and a legend",
-          "duration": 5,
+          "duration": 45,
           "failureMessages": []
         },
         {
@@ -94,12 +94,12 @@
           "fullName": " Pony.vue should emit an event on click",
           "status": "passed",
           "title": "should emit an event on click",
-          "duration": 34,
+          "duration": 7,
           "failureMessages": []
         }
       ],
-      "startTime": 1692012978920,
-      "endTime": 1692012978959,
+      "startTime": 1692017847043,
+      "endTime": 1692017847095,
       "status": "passed",
       "message": "",
       "name": "D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/components/__tests__/Pony.spec.ts"
@@ -114,12 +114,12 @@
           "fullName": " Race.vue should display a race name and its ponies",
           "status": "passed",
           "title": "should display a race name and its ponies",
-          "duration": 44,
+          "duration": 47,
           "failureMessages": []
         }
       ],
-      "startTime": 1692012979162,
-      "endTime": 1692012979206,
+      "startTime": 1692017847273,
+      "endTime": 1692017847320,
       "status": "passed",
       "message": "",
       "name": "D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/components/__tests__/Race.spec.ts"
@@ -134,12 +134,12 @@
           "fullName": " useRaceService should list races",
           "status": "passed",
           "title": "should list races",
-          "duration": 2,
+          "duration": 4,
           "failureMessages": []
         }
       ],
-      "startTime": 1692012978591,
-      "endTime": 1692012978593,
+      "startTime": 1692017847016,
+      "endTime": 1692017847020,
       "status": "passed",
       "message": "",
       "name": "D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/composables/__tests__/RaceService.spec.ts"
@@ -158,8 +158,8 @@
           "failureMessages": []
         }
       ],
-      "startTime": 1692012979130,
-      "endTime": 1692012979134,
+      "startTime": 1692017847255,
+      "endTime": 1692017847259,
       "status": "passed",
       "message": "",
       "name": "D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/utils/__tests__/FromNow.spec.ts"
@@ -174,12 +174,23 @@
           "fullName": " Races.vue should display every race name in a title",
           "status": "passed",
           "title": "should display every race name in a title",
-          "duration": 25,
+          "duration": 38,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "Races.vue"
+          ],
+          "fullName": " Races.vue should display a closable alert in case of error",
+          "status": "passed",
+          "title": "should display a closable alert in case of error",
+          "duration": 11,
           "failureMessages": []
         }
       ],
-      "startTime": 1692012979193,
-      "endTime": 1692012979218,
+      "startTime": 1692017847294,
+      "endTime": 1692017847343,
       "status": "passed",
       "message": "",
       "name": "D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/views/__tests__/Races.spec.ts"
