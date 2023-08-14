@@ -1,8 +1,17 @@
-import { defineConfig } from 'cypress'
+import { defineConfig } from 'cypress';
 
 export default defineConfig({
+  reporter: 'mochawesome',
+  reporterOptions: {
+    reportDir: 'results/mochawesome',
+    overwrite: false,
+    html: false,
+    json: true
+  },
+  video: false,
+  retries: 3,
   e2e: {
-    specPattern: 'cypress/e2e/**/*.{cy,spec}.{js,jsx,ts,tsx}',
+    experimentalRunAllSpecs: true,
     baseUrl: 'http://localhost:4173'
   }
-})
+});

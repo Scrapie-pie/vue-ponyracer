@@ -1,0 +1,35 @@
+{
+  "numTotalTestSuites": 2,
+  "numPassedTestSuites": 2,
+  "numFailedTestSuites": 0,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 1,
+  "numPassedTests": 1,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numTodoTests": 0,
+  "startTime": 1691997049701,
+  "success": true,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "",
+            "App.vue"
+          ],
+          "fullName": " App.vue renders a title",
+          "status": "passed",
+          "title": "renders a title",
+          "duration": 22,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1691997051105,
+      "endTime": 1691997051127,
+      "status": "passed",
+      "message": "",
+      "name": "D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/__tests__/App.spec.ts"
+    }
+  ]
+}
