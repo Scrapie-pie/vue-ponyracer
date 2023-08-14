@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "bootstrap": "5.2.3",
+    "date-fns": "2.29.3",
     "font-awesome": "4.7.0",
     "vue": "3.3.2"
   },

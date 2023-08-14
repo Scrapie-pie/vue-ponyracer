@@ -1,5 +1,6 @@
 <template>
   <h2>{{ raceModel.name }}</h2>
+  <p>{{ startInstant }}</p>
   <ul>
     <li v-for="pony of raceModel.ponies" :key="pony.id">
       {{ pony.name }}
@@ -8,8 +9,9 @@
 </template>
 
 <script lang="ts">
-import { PropType } from 'vue';
+import { computed, PropType } from 'vue';
 import { RaceModel } from '@/models/RaceModel';
+import fromNow from '@/utils/FromNow';
 
 export default {
   props: {
@@ -17,6 +19,11 @@ export default {
       type: Object as PropType<RaceModel>,
       required: true
     }
+  },
+  setup(props) {
+    const startInstant = computed(() => fromNow(props.raceModel.startInstant));
+
+    return { startInstant };
   }
 };
 </script>
