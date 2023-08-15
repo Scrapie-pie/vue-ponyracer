@@ -1,12 +1,12 @@
 import { createWebHistory, createRouter, RouteLocationNormalized } from 'vue-router';
 import Home from '@/views/Home.vue';
-import Races from '@/views/Races.vue';
-import PendingRaces from '@/views/PendingRaces.vue';
-import FinishedRaces from '@/views/FinishedRaces.vue';
-import Bet from '@/views/Bet.vue';
-import Live from '@/views/Live.vue';
-import Register from '@/views/Register.vue';
-import Login from '@/views/Login.vue';
+const Races = () => import('@/views/Races.vue');
+const PendingRaces = () => import('@/views/PendingRaces.vue');
+const FinishedRaces = () => import('@/views/FinishedRaces.vue');
+const Bet = () => import('@/views/Bet.vue');
+const Live = () => import('@/views/Live.vue');
+const Register = () => import('@/views/Register.vue');
+const Login = () => import('@/views/Login.vue');
 import { useUserStore } from '@/composables/UserStore';
 
 const router = createRouter({
