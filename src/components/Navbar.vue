@@ -19,6 +19,11 @@
               {{ userModel.money }}
             </span>
           </li>
+          <li class="nav-item">
+            <a id="logout-link" @click="logout()" class="nav-link" role="button">
+              <span class="fa fa-power-off"> </span>
+            </a>
+          </li>
         </ul>
       </div>
     </div>
@@ -27,6 +32,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 import { useUserService } from '@/composables/UserService';
 
 const navbarCollapsed = ref(true);
@@ -34,5 +40,10 @@ function toggleNavbar() {
   navbarCollapsed.value = !navbarCollapsed.value;
 }
 
-const { userModel } = useUserService();
+const { userModel, logoutAndForget } = useUserService();
+const router = useRouter();
+function logout() {
+  logoutAndForget();
+  router.push({ name: 'home' });
+}
 </script>

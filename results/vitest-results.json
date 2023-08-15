@@ -1,10 +1,10 @@
 {
-  "numTotalTestSuites": 4,
-  "numPassedTestSuites": 4,
-  "numFailedTestSuites": 0,
+  "numTotalTestSuites": 3,
+  "numPassedTestSuites": 2,
+  "numFailedTestSuites": 1,
   "numPendingTestSuites": 0,
-  "numTotalTests": 7,
-  "numPassedTests": 4,
+  "numTotalTests": 3,
+  "numPassedTests": 0,
   "numFailedTests": 3,
   "numPendingTests": 0,
   "numTodoTests": 0,
@@ -12,56 +12,11 @@
   "success": false,
   "testResults": [
     {
-      "assertionResults": [
-        {
-          "ancestorTitles": [
-            "",
-            "Navbar.vue"
-          ],
-          "fullName": " Navbar.vue should toggle the class on click",
-          "status": "passed",
-          "title": "should toggle the class on click",
-          "duration": 7,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "Navbar.vue"
-          ],
-          "fullName": " Navbar.vue should display a link to the home page",
-          "status": "passed",
-          "title": "should display a link to the home page",
-          "duration": 2,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "Navbar.vue"
-          ],
-          "fullName": " Navbar.vue should display a link to the races page",
-          "status": "passed",
-          "title": "should display a link to the races page",
-          "duration": 7,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "Navbar.vue"
-          ],
-          "fullName": " Navbar.vue should display the logged in user",
-          "status": "passed",
-          "title": "should display the logged in user",
-          "duration": 32,
-          "failureMessages": []
-        }
-      ],
-      "startTime": 1692079563690,
-      "endTime": 1692079563738,
+      "assertionResults": [],
+      "startTime": 1692003793669,
+      "endTime": 1692003793669,
       "status": "passed",
-      "message": "",
+      "message": "spy.restore is not a function",
       "name": "D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/components/__tests__/Navbar.spec.ts"
     },
     {
@@ -91,7 +46,7 @@
           "fullName": " App.vue renders the navbar",
           "status": "failed",
           "title": "renders the navbar",
-          "duration": 27,
+          "duration": 23,
           "failureMessages": [
             "Cannot destructure property 'Component' of 'undefined' as it is undefined."
           ],
@@ -118,8 +73,8 @@
           }
         }
       ],
-      "startTime": 1692079561738,
-      "endTime": 1692079561770,
+      "startTime": 1692080291681,
+      "endTime": 1692080291709,
       "status": "failed",
       "message": "",
       "name": "D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/__tests__/App.spec.ts"

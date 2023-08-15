@@ -2,7 +2,17 @@ import { ref } from 'vue';
 import axios, { AxiosResponse } from 'axios';
 import { UserModel } from '@/models/UserModel';
 
-const userModel = ref<UserModel | null>(null);
+export function retrieveUser(): UserModel | null {
+  const userAsString = window.localStorage.getItem('rememberMe');
+  return userAsString ? JSON.parse(userAsString) : null;
+}
+
+const userModel = ref(retrieveUser());
+
+function storeLoggedInUser(user: UserModel): void {
+  userModel.value = user;
+  window.localStorage.setItem('rememberMe', JSON.stringify(user));
+}
 
 export function useUserService() {
   return {
@@ -10,6 +20,7 @@ export function useUserService() {
 
     async register(user: UserModel): Promise<UserModel> {
       const response: AxiosResponse = await axios.post<UserModel>('https://ponyracer.ninja-squad.com/api/users', user);
+      storeLoggedInUser(response.data);
       return response.data;
     },
 
@@ -18,8 +29,13 @@ export function useUserService() {
         'https://ponyracer.ninja-squad.com/api/users/authentication',
         credentials
       );
-      userModel.value = response.data;
+      storeLoggedInUser(response.data);
       return response.data;
+    },
+
+    logoutAndForget(): void {
+      userModel.value = null;
+      window.localStorage.removeItem('rememberMe');
     }
   };
 }
