@@ -1,7 +1,8 @@
-import { ref } from 'vue';
+import { ref, watchEffect } from 'vue';
 import { defineStore } from 'pinia';
 import axios, {AxiosRequestConfig, AxiosResponse} from 'axios';
 import { UserModel } from '@/models/UserModel';
+import { Connection, useWsService } from '@/composables/WsService';
 
 export function retrieveUser(): UserModel | null {
   const userAsString = window.localStorage.getItem('rememberMe');
@@ -9,6 +10,19 @@ export function retrieveUser(): UserModel | null {
 }
 
 const userModel = ref(retrieveUser());
+let connection: Connection | null;
+
+watchEffect(() => {
+  if (connection) {
+    connection.disconnect();
+  }
+  if (userModel.value) {
+    const wsService = useWsService();
+    connection = wsService.connect<UserModel>(`/player/${userModel.value.id}`, (userWithScore: UserModel) => {
+      userModel.value!.money = userWithScore.money;
+    });
+  }
+});
 
 function storeLoggedInUser(user: UserModel): void {
   userModel.value = user;

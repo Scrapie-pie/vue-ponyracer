@@ -1,11 +1,20 @@
 import { beforeEach, describe, expect, test, vi } from 'vitest';
+import { nextTick } from 'vue';
 import axios, { AxiosInterceptorManager, AxiosResponse, AxiosRequestConfig } from 'axios';
 import { setActivePinia } from 'pinia';
 import { createVitestPinia } from '@/__tests__/pinia';
 import { useUserStore, retrieveUser } from '@/composables/UserStore';
 import { UserModel } from '@/models/UserModel';
 
+const mockWsService = {
+  connect: vi.fn()
+};
+vi.mock('@/composables/WsService', () => ({
+  useWsService: () => mockWsService
+}));
+
 const userModel: UserModel = {
+  id: 1,
   birthYear: 1986,
   login: 'cedric',
   password: '',
@@ -109,5 +118,38 @@ describe('useUserStore', () => {
     userStore.userModel = userModel;
     // The interceptor should add an `Authorization` header with the value `Bearer ${token}`
     expect(interceptor.fulfilled(config).headers).toEqual({ Authorization: `Bearer ${userModel.token}` });
+  });
+
+  test('should get the score updates', async () => {
+    const connection = { disconnect: vi.fn() };
+    mockWsService.connect.mockReturnValue(connection);
+
+    const userStore = useUserStore();
+    // It should not have called the WS service right away
+    expect(mockWsService.connect).not.toHaveBeenCalled();
+    userStore.userModel = { ...userModel, id: 2 };
+    await nextTick();
+    // It should have called the WS service when the userModel changes
+    expect(mockWsService.connect).toHaveBeenCalledTimes(1);
+    expect(mockWsService.connect).toHaveBeenCalledWith('/player/2', expect.any(Function));
+
+    const wsCallback = mockWsService.connect.mock.calls[0][1];
+    wsCallback({ money: 300 } as UserModel);
+
+    // It should update the score when a message is received
+    expect(userStore.userModel.money).toBe(300);
+
+    userStore.userModel = null;
+    await nextTick();
+
+    // When the user logs out, the disconnect function should have been called
+    expect(connection.disconnect).toHaveBeenCalled();
+    expect(mockWsService.connect).toHaveBeenCalledTimes(1);
+
+    userStore.userModel = { ...userModel, id: 3 };
+    await nextTick();
+    // It should have called the WS service when the userModel changes
+    expect(mockWsService.connect).toHaveBeenCalledTimes(2);
+    expect(mockWsService.connect).toHaveBeenCalledWith('/player/3', expect.any(Function));
   });
 });

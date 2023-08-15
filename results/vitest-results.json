@@ -1,41 +1,83 @@
 {
-  "numTotalTestSuites": 2,
+  "numTotalTestSuites": 3,
   "numPassedTestSuites": 2,
-  "numFailedTestSuites": 0,
+  "numFailedTestSuites": 1,
   "numPendingTestSuites": 0,
-  "numTotalTests": 1,
+  "numTotalTests": 3,
   "numPassedTests": 0,
-  "numFailedTests": 1,
+  "numFailedTests": 3,
   "numPendingTests": 0,
   "numTodoTests": 0,
   "startTime": 1692003793669,
   "success": false,
   "testResults": [
     {
+      "assertionResults": [],
+      "startTime": 1692003793669,
+      "endTime": 1692003793669,
+      "status": "passed",
+      "message": "spy.restore is not a function",
+      "name": "D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/components/__tests__/Navbar.spec.ts"
+    },
+    {
       "assertionResults": [
         {
           "ancestorTitles": [
             "",
-            "Races.vue"
+            "App.vue"
           ],
-          "fullName": " Races.vue should display every race name in a title",
+          "fullName": " App.vue renders a title",
           "status": "failed",
-          "title": "should display every race name in a title",
-          "duration": 69,
+          "title": "renders a title",
+          "duration": 3,
           "failureMessages": [
-            "expected [] to have a length of 2 but got +0"
+            "Cannot destructure property 'Component' of 'undefined' as it is undefined."
           ],
           "location": {
-            "line": 13,
-            "column": 28
+            "line": 182,
+            "column": 19
+          }
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "App.vue"
+          ],
+          "fullName": " App.vue renders the navbar",
+          "status": "failed",
+          "title": "renders the navbar",
+          "duration": 21,
+          "failureMessages": [
+            "Cannot destructure property 'Component' of 'undefined' as it is undefined."
+          ],
+          "location": {
+            "line": 182,
+            "column": 19
+          }
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "App.vue"
+          ],
+          "fullName": " App.vue renders the races list",
+          "status": "failed",
+          "title": "renders the races list",
+          "duration": 2,
+          "failureMessages": [
+            "Cannot destructure property 'Component' of 'undefined' as it is undefined."
+          ],
+          "location": {
+            "line": 182,
+            "column": 19
           }
         }
       ],
-      "startTime": 1692103762763,
-      "endTime": 1692103762832,
+      "startTime": 1692104354123,
+      "endTime": 1692104354150,
       "status": "failed",
       "message": "",
-      "name": "D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/views/__tests__/Races.spec.ts"
+      "name": "D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/__tests__/App.spec.ts"
     }
   ]
 }
