@@ -1,13 +1,11 @@
 <template>
   <div class="row">
     <div class="col-md-6 offset-md-3">
-      <h1>Sign up</h1>
+      <h1>Log in</h1>
 
-      <Alert v-if="registrationFailed" variant="danger" dismissible @dismissed="registrationFailed = false">
-        Try again with another login.
-      </Alert>
+      <Alert v-if="authenticationFailed" variant="danger" dismissible @dismissed="authenticationFailed = false">Nope, try again.</Alert>
 
-      <Form @submit="register($event)" :initialValues="initialValues" v-slot="{ meta: formMeta }">
+      <Form @submit="authenticate($event)" v-slot="{ meta: formMeta }">
         <Field name="login" rules="required" v-slot="{ field, meta }">
           <div class="mb-3">
             <label for="login" class="form-label" :class="{ 'text-danger': meta.dirty && !meta.valid }">Login</label>
@@ -22,14 +20,7 @@
             <ErrorMessage name="password" class="invalid-feedback" />
           </div>
         </Field>
-        <Field name="birthYear" rules="required" v-slot="{ field, meta }">
-          <div class="mb-3">
-            <label for="birth-year" class="form-label" :class="{ 'text-danger': meta.dirty && !meta.valid }">Birth year</label>
-            <input id="birth-year" type="number" class="form-control" :class="{ 'is-invalid': meta.dirty && !meta.valid }" v-bind="field" />
-            <ErrorMessage name="birthYear" class="invalid-feedback" />
-          </div>
-        </Field>
-        <button class="btn btn-primary" type="submit" :disabled="!formMeta.valid">Let's Go!</button>
+        <button class="btn btn-primary" type="submit" :disabled="!formMeta.valid">Log me in!</button>
       </Form>
     </div>
   </div>
@@ -39,22 +30,20 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { ErrorMessage, Field, Form } from 'vee-validate';
-import { UserModel } from '@/models/UserModel';
 import { useUserService } from '@/composables/UserService';
 import { useForms } from '@/composables/Forms';
 
 useForms();
-
-const initialValues = { birthYear: new Date().getFullYear() - 18 };
 const userService = useUserService();
 const router = useRouter();
-const registrationFailed = ref(false);
-async function register(userModel: Record<string, unknown>) {
+const authenticationFailed = ref(false);
+async function authenticate(credentials: Record<string, unknown>) {
+  authenticationFailed.value = false;
   try {
-    await userService.register(userModel as unknown as UserModel);
+    await userService.authenticate(credentials as { login: string; password: string });
     router.push({ name: 'home' });
   } catch (e) {
-    registrationFailed.value = true;
+    authenticationFailed.value = true;
   }
 }
 </script>

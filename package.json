@@ -18,10 +18,13 @@
     "vue-ninja": "vue-ninja"
   },
   "dependencies": {
+    "@vee-validate/i18n": "4.7.3",
+    "@vee-validate/rules": "4.7.3",
     "axios": "1.2.1",
     "bootstrap": "5.2.3",
     "date-fns": "2.29.3",
     "font-awesome": "4.7.0",
+    "vee-validate": "4.7.3",
     "vue": "3.3.2",
     "vue-router": "4.1.6"
   },
