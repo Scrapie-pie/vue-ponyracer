@@ -1,9 +1,6 @@
 <template>
   <div>
-    <div class="alert alert-danger" v-if="error">
-      An error occurred while loading.
-      <button type="button" class="btn-close" aria-label="Close" @click="error = false"></button>
-    </div>
+    <Alert v-if="error" variant="danger" dismissible @dismissed="error = false">An error occurred while loading.</Alert>
     <Race v-for="race in races" :key="race.id" :raceModel="race" />
   </div>
 </template>
