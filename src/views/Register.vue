@@ -55,7 +55,7 @@ import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { ErrorMessage, Field, Form } from 'vee-validate';
 import { UserModel } from '@/models/UserModel';
-import { useUserStore } from '@/composables/UserStore';
+import { useUserStore } from '@/composables/UserStore.ts';
 import { useForms } from '@/composables/Forms';
 
 useForms();

@@ -20,7 +20,9 @@
             <ErrorMessage name="password" class="invalid-feedback" />
           </div>
         </Field>
-        <button class="btn btn-primary" type="submit" :disabled="!formMeta.valid">Log me in!</button>
+        <button class="btn btn-primary" :class="{ shake: authenticationFailed }" type="submit" :disabled="!formMeta.valid">
+          Log me in!
+        </button>
       </Form>
     </div>
   </div>
@@ -47,3 +49,20 @@ async function authenticate(credentials: Record<string, unknown>) {
   }
 }
 </script>
+
+<style scoped>
+.shake {
+  animation: shake 300ms ease;
+}
+@keyframes shake {
+  10%,
+  50%,
+  90% {
+    transform: translateX(0.5rem);
+  }
+  30%,
+  70% {
+    transform: translateX(-0.5rem);
+  }
+}
+</style>
