@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, test, vi } from 'vitest';
-import axios, { AxiosResponse } from 'axios';
+import axios, { AxiosInterceptorManager, AxiosResponse, AxiosRequestConfig } from 'axios';
 import { setActivePinia } from 'pinia';
 import { createVitestPinia } from '@/__tests__/pinia';
 import { useUserStore, retrieveUser } from '@/composables/UserStore';
@@ -87,5 +87,27 @@ describe('useUserStore', () => {
 
     expect(userStore.userModel).toBeNull();
     expect(Storage.prototype.removeItem).toHaveBeenCalledWith('rememberMe');
+  });
+
+  test('should register an axios interceptor to handle the Authorization header', () => {
+    const userStore = useUserStore();
+    type RequestInterceptor = AxiosInterceptorManager<AxiosRequestConfig> & {
+      handlers: Array<{ fulfilled: (config: AxiosRequestConfig) => AxiosRequestConfig }>;
+    };
+    const interceptors = axios.interceptors.request as RequestInterceptor;
+
+    // You must register an interceptor in the constructor with `axios.interceptors.request.use()`
+    expect(interceptors.handlers).toHaveLength(1);
+
+    const interceptor = interceptors.handlers[0];
+    const config = { headers: {} };
+
+    userStore.userModel = null;
+    // The interceptor should not add an `Authorization` header if there is no user logged in
+    expect(interceptor.fulfilled(config).headers).toEqual({});
+
+    userStore.userModel = userModel;
+    // The interceptor should add an `Authorization` header with the value `Bearer ${token}`
+    expect(interceptor.fulfilled(config).headers).toEqual({ Authorization: `Bearer ${userModel.token}` });
   });
 });

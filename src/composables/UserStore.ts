@@ -1,6 +1,6 @@
 import { ref } from 'vue';
 import { defineStore } from 'pinia';
-import axios, { AxiosResponse } from 'axios';
+import axios, {AxiosRequestConfig, AxiosResponse} from 'axios';
 import { UserModel } from '@/models/UserModel';
 
 export function retrieveUser(): UserModel | null {
@@ -15,6 +15,13 @@ function storeLoggedInUser(user: UserModel): void {
   window.localStorage.setItem('rememberMe', JSON.stringify(user));
 }
 
+axios.interceptors.request.use((config: AxiosRequestConfig) => {
+  if (userModel.value) {
+    config.headers!.Authorization = `Bearer ${userModel.value.token}`;
+  }
+  return config;
+});
+
 export const useUserStore = defineStore('user', () => {
   return {
     userModel,
@@ -26,10 +33,7 @@ export const useUserStore = defineStore('user', () => {
     },
 
     async authenticate(credentials: { login: string; password: string }): Promise<UserModel> {
-      const response: AxiosResponse = await axios.post<UserModel>(
-        'https://ponyracer.ninja-squad.com/api/users/authentication',
-        credentials
-      );
+      const response: AxiosResponse = await axios.post<UserModel>('https://ponyracer.ninja-squad.com/api/users/authentication', credentials);
       storeLoggedInUser(response.data);
       return response.data;
     },
