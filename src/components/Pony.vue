@@ -12,6 +12,7 @@ import { PonyModel } from '@/models/PonyModel';
 const props = defineProps<{
   ponyModel: PonyModel;
   isRunning?: boolean;
+  isBoosted?: boolean;
 }>();
 
 const emit = defineEmits<{
@@ -22,7 +23,9 @@ function clicked() {
   emit('ponySelected');
 }
 
-const ponyImageUrl = computed(() => `/images/pony-${props.ponyModel.color.toLowerCase()}${props.isRunning ? '-running' : ''}.gif`);
+const ponyImageUrl = computed(
+  () => `/images/pony-${props.ponyModel.color.toLowerCase()}${props.isBoosted ? '-rainbow' : props.isRunning ? '-running' : ''}.gif`
+);
 </script>
 
 <style scoped>

@@ -34,7 +34,7 @@
         :class="{ selected: pony.id === raceModel.betPonyId }"
         style="transition: all linear 1s"
       >
-        <Pony :ponyModel="pony" :isRunning="true" />
+        <Pony :ponyModel="pony" :isRunning="true" :isBoosted="pony.boosted" @ponySelected="cheer(pony.id)" />
       </div>
     </div>
   </div>
@@ -49,6 +49,11 @@ import { LiveRaceModel, RaceModel } from '@/models/RaceModel';
 import { PonyWithPositionModel } from '@/models/PonyModel';
 import { useRaceService } from '@/composables/RaceService';
 import { useWsService, Connection } from '@/composables/WsService';
+
+interface Cheer {
+  ponyId: number;
+  timestamp: number;
+}
 
 let connection: Connection | null = null;
 onUnmounted(() => connection?.disconnect());
@@ -76,6 +81,33 @@ if (raceModel.value.status !== 'FINISHED') {
     });
   } catch (e) {
     error.value = true;
+  }
+}
+
+let cheersCounter: Array<Cheer> = [];
+async function cheer(ponyId: number) {
+  const cheer = { ponyId, timestamp: Date.now() };
+  const last = cheersCounter[cheersCounter.length - 1];
+  // if the pony is different than the last
+  if (!last || last.ponyId !== ponyId) {
+    // reset
+    cheersCounter = [cheer];
+    return;
+  }
+  // else add the cheer
+  cheersCounter.push(cheer);
+  // if 5 cheers
+  if (cheersCounter.length >= 5) {
+    const first = cheersCounter[0];
+    // if in the same second
+    if (cheer.timestamp - first.timestamp < 1000) {
+      // boost the pony!
+      cheersCounter = [];
+      await raceService.boost(raceModel.value!.id, ponyId);
+    } else {
+      // drop the first one
+      cheersCounter.splice(0, 1);
+    }
   }
 }
 </script>
