@@ -8,7 +8,16 @@
       <div id="navbar" class="navbar-collapse" :class="{ collapse: navbarCollapsed }">
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            <RouterLink to="/races" class="nav-link">Races</RouterLink>
+            <RouterLink to="/races" v-if="userModel" class="nav-link">Races</RouterLink>
+          </li>
+        </ul>
+        <ul class="navbar-nav" v-if="userModel">
+          <li class="navbar-text">
+            <span id="current-user" class="me-2">
+              {{ userModel.login }}
+              <span class="fa fa-star"></span>
+              {{ userModel.money }}
+            </span>
           </li>
         </ul>
       </div>
@@ -18,9 +27,12 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import { useUserService } from '@/composables/UserService';
 
 const navbarCollapsed = ref(true);
 function toggleNavbar() {
   navbarCollapsed.value = !navbarCollapsed.value;
 }
+
+const { userModel } = useUserService();
 </script>

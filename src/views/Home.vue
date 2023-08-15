@@ -7,9 +7,18 @@
       </h1>
     </div>
 
-    <div>
-      <RouterLink to="/races" class="btn btn-large btn-primary me-2">Races</RouterLink>
+    <div v-if="!userModel">
+      <RouterLink to="/login" class="btn btn-large btn-primary me-2">Login</RouterLink>
       <RouterLink to="/register" class="btn btn-large btn-primary">Register</RouterLink>
+    </div>
+    <div v-else>
+      <RouterLink to="/races" class="btn btn-large btn-primary">Races</RouterLink>
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { useUserService } from '@/composables/UserService';
+
+const { userModel } = useUserService();
+</script>
