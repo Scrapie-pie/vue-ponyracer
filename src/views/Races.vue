@@ -1,16 +1,18 @@
 <template>
-  <div v-for="race in races" :key="race.id">
-    <Race :raceModel="race" />
-    <RouterLink :to="{ name: 'bet', params: { raceId: race.id } }" class="btn btn-primary">Bet on {{ race.name }}</RouterLink>
+  <div>
+    <h1>Races</h1>
+    <ul class="nav nav-tabs mt-2 mb-4">
+      <li class="nav-item">
+        <RouterLink :to="{ name: 'pendingRaces' }" class="nav-link" activeClass="active">Pending races</RouterLink>
+      </li>
+      <li class="nav-item">
+        <RouterLink :to="{ name: 'finishedRaces' }" class="nav-link" activeClass="active">Finished races</RouterLink>
+      </li>
+    </ul>
+    <RouterView />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import { RaceModel } from '@/models/RaceModel';
-import { useRaceService } from '@/composables/RaceService';
-import Race from '@/components/Race.vue';
-
-const raceService = useRaceService();
-const races = ref<Array<RaceModel>>(await raceService.list());
+// empty setup for now
 </script>

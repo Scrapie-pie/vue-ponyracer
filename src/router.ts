@@ -1,6 +1,8 @@
 import { createWebHistory, createRouter, RouteLocationNormalized } from 'vue-router';
 import Home from '@/views/Home.vue';
 import Races from '@/views/Races.vue';
+import PendingRaces from '@/views/PendingRaces.vue';
+import FinishedRaces from '@/views/FinishedRaces.vue';
 import Bet from '@/views/Bet.vue';
 import Live from '@/views/Live.vue';
 import Register from '@/views/Register.vue';
@@ -17,8 +19,26 @@ const router = createRouter({
     },
     {
       path: '/races',
-      name: 'races',
-      component: Races
+      component: Races,
+      children: [
+        {
+          path: '',
+          name: 'races',
+          redirect: {
+            name: 'pendingRaces'
+          }
+        },
+        {
+          path: 'pending',
+          name: 'pendingRaces',
+          component: PendingRaces
+        },
+        {
+          path: 'finished',
+          name: 'finishedRaces',
+          component: FinishedRaces
+        }
+      ]
     },
     {
       path: '/races/:raceId',

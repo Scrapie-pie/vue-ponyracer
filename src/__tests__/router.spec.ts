@@ -35,7 +35,7 @@ describe('Router', () => {
     await router.push('/races');
 
     // You can either return true or undefined to allow the navigation
-    expect(router.currentRoute.value.path).toBe('/races');
+    expect(router.currentRoute.value.path).toBe('/races/pending');
 
     await router.push('/races/1');
 
@@ -46,6 +46,16 @@ describe('Router', () => {
 
     // You can either return true or undefined to allow the navigation
     expect(router.currentRoute.value.path).toBe('/races/1/live');
+
+    await router.push('/races/pending');
+
+    // You can either return true or undefined to allow the navigation
+    expect(router.currentRoute.value.path).toBe('/races/pending');
+
+    await router.push('/races/finished');
+
+    // You can either return true or undefined to allow the navigation
+    expect(router.currentRoute.value.path).toBe('/races/finished');
   });
 
   test('should allow to navigate if navigating to home, login or register anonymously', async () => {

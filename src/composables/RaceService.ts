@@ -3,8 +3,8 @@ import { RaceModel } from '@/models/RaceModel';
 
 export function useRaceService() {
   return {
-    async list(): Promise<Array<RaceModel>> {
-      const response: AxiosResponse = await axios.get<Array<RaceModel>>('https://ponyracer.ninja-squad.com/api/races', { params: { status: 'PENDING' } });
+    async list(status: 'PENDING' | 'RUNNING' | 'FINISHED'): Promise<Array<RaceModel>> {
+      const response: AxiosResponse = await axios.get<Array<RaceModel>>('https://ponyracer.ninja-squad.com/api/races', { params: { status } });
       return response.data;
     },
 
