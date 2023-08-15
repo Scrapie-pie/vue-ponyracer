@@ -1,6 +1,8 @@
 import { createApp } from 'vue';
-import Alert from '@/components/Alert.vue';
 import App from './App.vue';
-import './assets/main.css';
+import Alert from '@/components/Alert.vue';
+import router from './router';
 
-createApp(App).component('Alert', Alert).mount('#app');
+import '@/assets/main.css';
+
+createApp(App).use(router).component('Alert', Alert).mount('#app');
