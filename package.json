@@ -24,11 +24,13 @@
     "bootstrap": "5.2.3",
     "date-fns": "2.29.3",
     "font-awesome": "4.7.0",
+    "pinia": "2.0.28",
     "vee-validate": "4.7.3",
     "vue": "3.3.2",
     "vue-router": "4.1.6"
   },
   "devDependencies": {
+    "@pinia/testing": "0.0.14",
     "@rushstack/eslint-patch": "1.2.0",
     "@tsconfig/node18": "2.0.1",
     "@types/jsdom": "21.1.1",

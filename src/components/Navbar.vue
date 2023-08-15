@@ -21,7 +21,7 @@
           </li>
           <li class="nav-item">
             <a id="logout-link" @click="logout()" class="nav-link" role="button">
-              <span class="fa fa-power-off"> </span>
+              <span class="fa fa-power-off"></span>
             </a>
           </li>
         </ul>
@@ -33,17 +33,20 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { useUserService } from '@/composables/UserService';
+import { storeToRefs } from 'pinia';
+import { useUserStore } from '@/composables/UserStore';
 
 const navbarCollapsed = ref(true);
 function toggleNavbar() {
   navbarCollapsed.value = !navbarCollapsed.value;
 }
 
-const { userModel, logoutAndForget } = useUserService();
+const userStore = useUserStore();
+const { userModel } = storeToRefs(userStore);
+
 const router = useRouter();
 function logout() {
-  logoutAndForget();
+  userStore.logoutAndForget();
   router.push({ name: 'home' });
 }
 </script>

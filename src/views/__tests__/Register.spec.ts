@@ -1,23 +1,19 @@
-import { describe, expect, test, vi } from 'vitest';
+import { describe, expect, MockedObject, test } from 'vitest';
 import { flushPromises, mount } from '@vue/test-utils';
 import { getRouter, injectRouterMock } from 'vue-router-mock';
 import { createVitestRouterMock } from '@/__tests__/router-mock';
+import { createVitestPinia } from '@/__tests__/pinia';
+import { useUserStore } from '@/composables/UserStore';
 import Register from '@/views/Register.vue';
-import { UserModel } from '@/models/UserModel';
 import Alert from '@/components/Alert.vue';
 
-const mockUserService = {
-  register: vi.fn()
-};
-vi.mock('@/composables/UserService', () => ({
-  useUserService: () => mockUserService
-}));
 const router = createVitestRouterMock();
 
 async function registerWrapper() {
   injectRouterMock(router);
   const wrapper = mount(Register, {
     global: {
+      plugins: [createVitestPinia()],
       components: {
         Alert
       }
@@ -222,7 +218,6 @@ describe('Register.vue', () => {
   });
 
   test('should call the register function on submit', async () => {
-    mockUserService.register.mockResolvedValue({} as UserModel);
     const wrapper = await registerWrapper();
     const mockRouter = getRouter();
 
@@ -249,7 +244,8 @@ describe('Register.vue', () => {
     await flushPromises();
     // You may have forgotten the submit handler on the `form` element
     // or to call the `register` function in the submit handler
-    expect(mockUserService.register).toHaveBeenCalled();
+    const userStore = useUserStore();
+    expect(userStore.register).toHaveBeenCalled();
     await flushPromises();
     // It should redirect to home after a submission success
     expect(mockRouter.push).toHaveBeenCalled();
@@ -260,8 +256,9 @@ describe('Register.vue', () => {
   });
 
   test('should display an alert on submission failure', async () => {
-    mockUserService.register.mockRejectedValue(null);
     const wrapper = await registerWrapper();
+    const userStore = useUserStore() as MockedObject<ReturnType<typeof useUserStore>>;
+    userStore.register.mockRejectedValue(new Error('Registration failed'));
     const mockRouter = getRouter();
 
     // Fill all values
@@ -281,7 +278,7 @@ describe('Register.vue', () => {
     await flushPromises();
     // You may have forgotten the submit handler on the `form` element
     // or to call the `register` function in the submit handler
-    expect(mockUserService.register).toHaveBeenCalled();
+    expect(userStore.register).toHaveBeenCalled();
     await flushPromises();
     // It should not redirect to home after a submission failure
     expect(mockRouter.push).not.toHaveBeenCalled();

@@ -18,7 +18,8 @@
 </template>
 
 <script setup lang="ts">
-import { useUserService } from '@/composables/UserService';
+import { storeToRefs } from 'pinia';
+import { useUserStore } from '@/composables/UserStore';
 
-const { userModel } = useUserService();
+const { userModel } = storeToRefs(useUserStore());
 </script>

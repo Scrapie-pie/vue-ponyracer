@@ -30,11 +30,11 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { ErrorMessage, Field, Form } from 'vee-validate';
-import { useUserService } from '@/composables/UserService';
+import { useUserStore } from '@/composables/UserStore';
 import { useForms } from '@/composables/Forms';
 
 useForms();
-const userService = useUserService();
+const userService = useUserStore();
 const router = useRouter();
 const authenticationFailed = ref(false);
 async function authenticate(credentials: Record<string, unknown>) {

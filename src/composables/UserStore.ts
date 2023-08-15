@@ -1,4 +1,5 @@
 import { ref } from 'vue';
+import { defineStore } from 'pinia';
 import axios, { AxiosResponse } from 'axios';
 import { UserModel } from '@/models/UserModel';
 
@@ -14,7 +15,7 @@ function storeLoggedInUser(user: UserModel): void {
   window.localStorage.setItem('rememberMe', JSON.stringify(user));
 }
 
-export function useUserService() {
+export const useUserStore = defineStore('user', () => {
   return {
     userModel,
 
@@ -38,4 +39,4 @@ export function useUserService() {
       window.localStorage.removeItem('rememberMe');
     }
   };
-}
+});

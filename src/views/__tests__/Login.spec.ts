@@ -1,23 +1,19 @@
-import { describe, expect, test, vi } from 'vitest';
+import { describe, expect, MockedObject, test } from 'vitest';
 import { flushPromises, mount } from '@vue/test-utils';
 import { getRouter, injectRouterMock } from 'vue-router-mock';
 import { createVitestRouterMock } from '@/__tests__/router-mock';
+import { createVitestPinia } from '@/__tests__/pinia';
 import Login from '@/views/Login.vue';
 import Alert from '@/components/Alert.vue';
-import { UserModel } from '@/models/UserModel';
+import { useUserStore } from '@/composables/UserStore';
 
-const mockUserService = {
-  authenticate: vi.fn()
-};
-vi.mock('@/composables/UserService', () => ({
-  useUserService: () => mockUserService
-}));
 const router = createVitestRouterMock();
 
 async function loginWrapper() {
   injectRouterMock(router);
   const wrapper = mount(Login, {
     global: {
+      plugins: [createVitestPinia()],
       components: {
         Alert
       }
@@ -111,7 +107,6 @@ describe('Login.vue', () => {
   });
 
   test('should call the authenticate function on submit', async () => {
-    mockUserService.authenticate.mockResolvedValue({} as UserModel);
     const wrapper = await loginWrapper();
     const mockRouter = getRouter();
 
@@ -134,7 +129,8 @@ describe('Login.vue', () => {
     await flushPromises();
     // You may have forgotten the submit handler on the `form` element
     // or to call the `authenticate` function in the submit handler
-    expect(mockUserService.authenticate).toHaveBeenCalled();
+    const userStore = useUserStore();
+    expect(userStore.authenticate).toHaveBeenCalled();
     await flushPromises();
     // It should redirect to home after a submission success
     expect(mockRouter.push).toHaveBeenCalled();
@@ -145,8 +141,9 @@ describe('Login.vue', () => {
   });
 
   test('should display an alert on submission failure', async () => {
-    mockUserService.authenticate.mockRejectedValue(new Error('Authentication failed'));
     const wrapper = await loginWrapper();
+    const userStore = useUserStore() as MockedObject<ReturnType<typeof useUserStore>>;
+    userStore.authenticate.mockRejectedValue(new Error('Authentication failed'));
     const mockRouter = getRouter();
 
     // Fill all values
@@ -162,7 +159,7 @@ describe('Login.vue', () => {
     await flushPromises();
     // You may have forgotten the submit handler on the `form` element
     // or to call the `authenticate` function in the submit handler
-    expect(mockUserService.authenticate).toHaveBeenCalled();
+    expect(userStore.authenticate).toHaveBeenCalled();
     await flushPromises();
     // It should not redirect to home after a submission failure
     expect(mockRouter.push).not.toHaveBeenCalled();
