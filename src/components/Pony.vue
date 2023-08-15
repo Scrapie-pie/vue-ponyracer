@@ -1,5 +1,5 @@
 <template>
-  <figure @click="clicked">
+  <figure @click="clicked()">
     <img :src="ponyImageUrl" :alt="ponyModel.name" />
     <figcaption>{{ ponyModel.name }}</figcaption>
   </figure>
@@ -11,17 +11,18 @@ import { PonyModel } from '@/models/PonyModel';
 
 const props = defineProps<{
   ponyModel: PonyModel;
+  isRunning?: boolean;
 }>();
 
 const emit = defineEmits<{
-  ponySelected: [];
+  (e: 'ponySelected'): void;
 }>();
 
-const clicked = () => {
+function clicked() {
   emit('ponySelected');
-};
+}
 
-const ponyImageUrl = computed(() => `/images/pony-${props.ponyModel.color.toLowerCase()}.gif`);
+const ponyImageUrl = computed(() => `/images/pony-${props.ponyModel.color.toLowerCase()}${props.isRunning ? '-running' : ''}.gif`);
 </script>
 
 <style scoped>

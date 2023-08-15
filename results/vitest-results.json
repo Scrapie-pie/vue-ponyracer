@@ -3,12 +3,12 @@
   "numPassedTestSuites": 2,
   "numFailedTestSuites": 0,
   "numPendingTestSuites": 0,
-  "numTotalTests": 4,
-  "numPassedTests": 4,
+  "numTotalTests": 2,
+  "numPassedTests": 2,
   "numFailedTests": 0,
   "numPendingTests": 0,
   "numTodoTests": 0,
-  "startTime": 1692086225928,
+  "startTime": 1692071131148,
   "success": true,
   "testResults": [
     {
@@ -16,53 +16,31 @@
         {
           "ancestorTitles": [
             "",
-            "useRaceService"
+            "Pony.vue"
           ],
-          "fullName": " useRaceService should list races",
+          "fullName": " Pony.vue should display an image and a legend",
           "status": "passed",
-          "title": "should list races",
-          "duration": 1,
+          "title": "should display an image and a legend",
+          "duration": 31,
           "failureMessages": []
         },
         {
           "ancestorTitles": [
             "",
-            "useRaceService"
+            "Pony.vue"
           ],
-          "fullName": " useRaceService should get a race",
+          "fullName": " Pony.vue should emit an event on click",
           "status": "passed",
-          "title": "should get a race",
-          "duration": 1,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "useRaceService"
-          ],
-          "fullName": " useRaceService should bet on a race",
-          "status": "passed",
-          "title": "should bet on a race",
-          "duration": 0,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "useRaceService"
-          ],
-          "fullName": " useRaceService should cancel a bet on a race",
-          "status": "passed",
-          "title": "should cancel a bet on a race",
-          "duration": 3,
+          "title": "should emit an event on click",
+          "duration": 5,
           "failureMessages": []
         }
       ],
-      "startTime": 1692101935383,
-      "endTime": 1692101935389,
+      "startTime": 1692103187905,
+      "endTime": 1692103187942,
       "status": "passed",
       "message": "",
-      "name": "D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/composables/__tests__/RaceService.spec.ts"
+      "name": "D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/components/__tests__/Pony.spec.ts"
     }
   ]
 }
