@@ -1,7 +1,7 @@
 import { ref, watchEffect } from 'vue';
 import { defineStore } from 'pinia';
 import axios, {AxiosRequestConfig, AxiosResponse} from 'axios';
-import { UserModel } from '@/models/UserModel';
+import { UserModel, ScoreHistoryModel } from '@/models/UserModel';
 import { Connection, useWsService } from '@/composables/WsService';
 
 export function retrieveUser(): UserModel | null {
@@ -55,6 +55,11 @@ export const useUserStore = defineStore('user', () => {
     logoutAndForget(): void {
       userModel.value = null;
       window.localStorage.removeItem('rememberMe');
+    },
+
+    async getScoreHistory(): Promise<Array<ScoreHistoryModel>> {
+      const response: AxiosResponse = await axios.get<Array<ScoreHistoryModel>>('https://ponyracer.ninja-squad.com/api/money/history');
+      return response.data;
     }
   };
 });

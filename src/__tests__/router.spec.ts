@@ -56,6 +56,11 @@ describe('Router', () => {
 
     // You can either return true or undefined to allow the navigation
     expect(router.currentRoute.value.path).toBe('/races/finished');
+
+    await router.push('/score-history');
+
+    // You can either return true or undefined to allow the navigation
+    expect(router.currentRoute.value.path).toBe('/score-history');
   });
 
   test('should allow to navigate if navigating to home, login or register anonymously', async () => {

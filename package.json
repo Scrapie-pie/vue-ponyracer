@@ -22,6 +22,8 @@
     "@vee-validate/rules": "4.7.3",
     "axios": "1.2.1",
     "bootstrap": "5.2.3",
+    "chart.js": "4.1.1",
+    "chartjs-adapter-date-fns": "3.0.0",
     "date-fns": "2.29.3",
     "font-awesome": "4.7.0",
     "pinia": "2.0.28",

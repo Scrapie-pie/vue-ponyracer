@@ -7,6 +7,7 @@ const Bet = () => import('@/views/Bet.vue');
 const Live = () => import('@/views/Live.vue');
 const Register = () => import('@/views/Register.vue');
 const Login = () => import('@/views/Login.vue');
+const ScoreHistory = () => import('@/views/ScoreHistory.vue');
 import { useUserStore } from '@/composables/UserStore';
 
 const router = createRouter({
@@ -59,6 +60,11 @@ const router = createRouter({
       path: '/login',
       name: 'login',
       component: Login
+    },
+    {
+      path: '/score-history',
+      name: 'score',
+      component: ScoreHistory
     }
   ]
 });

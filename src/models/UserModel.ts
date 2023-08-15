@@ -6,3 +6,8 @@ export interface UserModel {
   money?: number;
   token?: string;
 }
+
+export interface ScoreHistoryModel {
+  instant: string;
+  money: number;
+}

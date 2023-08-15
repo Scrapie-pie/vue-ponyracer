@@ -23,13 +23,14 @@ export default defineConfig({
             './src/views/Bet.vue',
             './src/views/Live.vue'
           ],
-          users: ['./src/views/Register.vue', './src/views/Login.vue']
+          users: ['./src/views/Register.vue', './src/views/Login.vue', './src/views/ScoreHistory.vue']
         }
       }
     }
   },
   test: {
     environment: 'jsdom',
+    setupFiles: ['src/views/__tests__/vitest-canvas.ts'],
     clearMocks: true,
     testTimeout: 10000,
     reporters: ['default', 'json'],
