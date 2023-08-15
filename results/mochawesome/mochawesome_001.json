@@ -5,9 +5,9 @@
     "passes": 0,
     "pending": 0,
     "failures": 3,
-    "start": "2023-08-15T04:06:03.546Z",
-    "end": "2023-08-15T04:07:08.671Z",
-    "duration": 65125,
+    "start": "2023-08-15T05:29:18.411Z",
+    "end": "2023-08-15T05:30:23.936Z",
+    "duration": 65525,
     "testsRegistered": 3,
     "passPercent": 0,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "fd459043-8309-497d-8ae5-be0da7cbc5a6",
+      "uuid": "0b677f38-3972-4a25-bb95-128ef9166eba",
       "title": "",
       "fullFile": "cypress\\e2e\\races.cy.ts",
       "file": "cypress\\e2e\\races.cy.ts",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "7ff92dd3-35b5-4263-95d7-ed1a20a0a395",
+          "uuid": "6345e7ad-cfef-46e2-978a-9ca6dd3cfdac",
           "title": "Races",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "should display a race list",
               "fullTitle": "Races should display a race list",
               "timedOut": null,
-              "duration": 5546,
+              "duration": 5651,
               "state": "failed",
               "speed": null,
               "pass": false,
@@ -51,8 +51,8 @@
                 "estack": "CypressError: Timed out retrying after 5000ms: `cy.wait()` timed out waiting `5000ms` for the 1st request to the route: `getRaces`. No request ever occurred.\n\nhttps://on.cypress.io/wait\n    at cypressErr (http://localhost:4173/__cypress/runner/cypress_runner.js:164252:18)\n    at Object.errByPath (http://localhost:4173/__cypress/runner/cypress_runner.js:164307:10)\n    at checkForXhr (http://localhost:4173/__cypress/runner/cypress_runner.js:151203:92)\n    at <unknown> (http://localhost:4173/__cypress/runner/cypress_runner.js:151226:28)\n    at tryCatcher (http://localhost:4173/__cypress/runner/cypress_runner.js:18744:23)\n    at Promise.attempt.Promise.try (http://localhost:4173/__cypress/runner/cypress_runner.js:16018:29)\n    at whenStable (http://localhost:4173/__cypress/runner/cypress_runner.js:156168:65)\n    at <unknown> (http://localhost:4173/__cypress/runner/cypress_runner.js:155609:14)\n    at tryCatcher (http://localhost:4173/__cypress/runner/cypress_runner.js:18744:23)\n    at Promise._settlePromiseFromHandler (http://localhost:4173/__cypress/runner/cypress_runner.js:16679:31)\n    at Promise._settlePromise (http://localhost:4173/__cypress/runner/cypress_runner.js:16736:18)\n    at Promise._settlePromise0 (http://localhost:4173/__cypress/runner/cypress_runner.js:16781:10)\n    at Promise._settlePromises (http://localhost:4173/__cypress/runner/cypress_runner.js:16861:18)\n    at Promise._fulfill (http://localhost:4173/__cypress/runner/cypress_runner.js:16805:18)\n    at <unknown> (http://localhost:4173/__cypress/runner/cypress_runner.js:18419:46)\nFrom Your Spec Code:\n    at Context.eval (webpack:///./cypress/e2e/races.cy.ts:37:0)",
                 "diff": null
               },
-              "uuid": "4203fd14-bf45-4ade-9958-93f5693aec49",
-              "parentUUID": "7ff92dd3-35b5-4263-95d7-ed1a20a0a395",
+              "uuid": "80d12ca9-f94f-44d6-a45f-195c552db426",
+              "parentUUID": "6345e7ad-cfef-46e2-978a-9ca6dd3cfdac",
               "isHook": false,
               "skipped": false
             },
@@ -60,7 +60,7 @@
               "title": "should display a loading error",
               "fullTitle": "Races should display a loading error",
               "timedOut": null,
-              "duration": 5575,
+              "duration": 5582,
               "state": "failed",
               "speed": null,
               "pass": false,
@@ -73,8 +73,8 @@
                 "estack": "CypressError: Timed out retrying after 5000ms: `cy.wait()` timed out waiting `5000ms` for the 1st request to the route: `getRacesError`. No request ever occurred.\n\nhttps://on.cypress.io/wait\n    at cypressErr (http://localhost:4173/__cypress/runner/cypress_runner.js:164252:18)\n    at Object.errByPath (http://localhost:4173/__cypress/runner/cypress_runner.js:164307:10)\n    at checkForXhr (http://localhost:4173/__cypress/runner/cypress_runner.js:151203:92)\n    at <unknown> (http://localhost:4173/__cypress/runner/cypress_runner.js:151226:28)\n    at tryCatcher (http://localhost:4173/__cypress/runner/cypress_runner.js:18744:23)\n    at Promise.attempt.Promise.try (http://localhost:4173/__cypress/runner/cypress_runner.js:16018:29)\n    at whenStable (http://localhost:4173/__cypress/runner/cypress_runner.js:156168:65)\n    at <unknown> (http://localhost:4173/__cypress/runner/cypress_runner.js:155609:14)\n    at tryCatcher (http://localhost:4173/__cypress/runner/cypress_runner.js:18744:23)\n    at Promise._settlePromiseFromHandler (http://localhost:4173/__cypress/runner/cypress_runner.js:16679:31)\n    at Promise._settlePromise (http://localhost:4173/__cypress/runner/cypress_runner.js:16736:18)\n    at Promise._settlePromise0 (http://localhost:4173/__cypress/runner/cypress_runner.js:16781:10)\n    at Promise._settlePromises (http://localhost:4173/__cypress/runner/cypress_runner.js:16861:18)\n    at Promise._fulfill (http://localhost:4173/__cypress/runner/cypress_runner.js:16805:18)\n    at <unknown> (http://localhost:4173/__cypress/runner/cypress_runner.js:18419:46)\nFrom Your Spec Code:\n    at Context.eval (webpack:///./cypress/e2e/races.cy.ts:51:0)",
                 "diff": null
               },
-              "uuid": "b7f1fedd-4c3b-4c95-a2a8-7f40011662ee",
-              "parentUUID": "7ff92dd3-35b5-4263-95d7-ed1a20a0a395",
+              "uuid": "5a71640f-3568-4221-86fc-7d91fff1429b",
+              "parentUUID": "6345e7ad-cfef-46e2-978a-9ca6dd3cfdac",
               "isHook": false,
               "skipped": false
             },
@@ -82,7 +82,7 @@
               "title": "should display ponies",
               "fullTitle": "Races should display ponies",
               "timedOut": null,
-              "duration": 5611,
+              "duration": 5598,
               "state": "failed",
               "speed": null,
               "pass": false,
@@ -95,8 +95,8 @@
                 "estack": "CypressError: Timed out retrying after 5000ms: `cy.wait()` timed out waiting `5000ms` for the 1st request to the route: `getRaces`. No request ever occurred.\n\nhttps://on.cypress.io/wait\n    at cypressErr (http://localhost:4173/__cypress/runner/cypress_runner.js:164252:18)\n    at Object.errByPath (http://localhost:4173/__cypress/runner/cypress_runner.js:164307:10)\n    at checkForXhr (http://localhost:4173/__cypress/runner/cypress_runner.js:151203:92)\n    at <unknown> (http://localhost:4173/__cypress/runner/cypress_runner.js:151226:28)\n    at tryCatcher (http://localhost:4173/__cypress/runner/cypress_runner.js:18744:23)\n    at Promise.attempt.Promise.try (http://localhost:4173/__cypress/runner/cypress_runner.js:16018:29)\n    at whenStable (http://localhost:4173/__cypress/runner/cypress_runner.js:156168:65)\n    at <unknown> (http://localhost:4173/__cypress/runner/cypress_runner.js:155609:14)\n    at tryCatcher (http://localhost:4173/__cypress/runner/cypress_runner.js:18744:23)\n    at Promise._settlePromiseFromHandler (http://localhost:4173/__cypress/runner/cypress_runner.js:16679:31)\n    at Promise._settlePromise (http://localhost:4173/__cypress/runner/cypress_runner.js:16736:18)\n    at Promise._settlePromise0 (http://localhost:4173/__cypress/runner/cypress_runner.js:16781:10)\n    at Promise._settlePromises (http://localhost:4173/__cypress/runner/cypress_runner.js:16861:18)\n    at Promise._fulfill (http://localhost:4173/__cypress/runner/cypress_runner.js:16805:18)\n    at <unknown> (http://localhost:4173/__cypress/runner/cypress_runner.js:18419:46)\nFrom Your Spec Code:\n    at Context.eval (webpack:///./cypress/e2e/races.cy.ts:56:0)",
                 "diff": null
               },
-              "uuid": "3e4bbadf-4e6e-4ae9-80b8-d3c7230ef39a",
-              "parentUUID": "7ff92dd3-35b5-4263-95d7-ed1a20a0a395",
+              "uuid": "31794516-e5a1-4427-84e4-e6e951638b5e",
+              "parentUUID": "6345e7ad-cfef-46e2-978a-9ca6dd3cfdac",
               "isHook": false,
               "skipped": false
             }
@@ -104,13 +104,13 @@
           "suites": [],
           "passes": [],
           "failures": [
-            "4203fd14-bf45-4ade-9958-93f5693aec49",
-            "b7f1fedd-4c3b-4c95-a2a8-7f40011662ee",
-            "3e4bbadf-4e6e-4ae9-80b8-d3c7230ef39a"
+            "80d12ca9-f94f-44d6-a45f-195c552db426",
+            "5a71640f-3568-4221-86fc-7d91fff1429b",
+            "31794516-e5a1-4427-84e4-e6e951638b5e"
           ],
           "pending": [],
           "skipped": [],
-          "duration": 16732,
+          "duration": 16831,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

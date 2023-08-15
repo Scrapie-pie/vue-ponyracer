@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2023-08-15T05:30:25.183Z",
+    "end": "2023-08-15T05:30:52.205Z",
+    "duration": 27022,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "b5ff24ff-f5f6-49c2-9d4c-5173ad8fa7d8",
+      "title": "",
+      "fullFile": "cypress\\e2e\\register.cy.ts",
+      "file": "cypress\\e2e\\register.cy.ts",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "b2008974-7631-4a86-9a33-1914c67a36ff",
+          "title": "Register",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should display a register page",
+              "fullTitle": "Register should display a register page",
+              "timedOut": null,
+              "duration": 6946,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('/register');\nvar loginInput = function () { return cy.get('input').first(); };\nvar passwordInput = function () { return cy.get('input[type=password]').first(); };\nvar birthYearInput = function () { return cy.get('input[type=number]'); };\nvar errorMessage = function () { return cy.get('.invalid-feedback'); };\ncy.get('button').should('be.visible').and('be.disabled');\nloginInput().type('c');\nloginInput().clear();\nerrorMessage().should('be.visible').and('contain', 'The login is required');\nloginInput().type('ced');\nerrorMessage().should('not.exist');\npasswordInput().type('p');\npasswordInput().clear();\nerrorMessage().should('be.visible').and('contain', 'The password is required');\npasswordInput().type('pa');\nerrorMessage().should('not.exist');\nbirthYearInput().clear();\nerrorMessage().should('be.visible').and('contain', 'The birth year is required');\nbirthYearInput().type('1986');\nerrorMessage().should('not.exist');\ncy.get('form > button').click();\ncy.wait('@registerUser');\ncy.location('pathname').should('eq', '/');",
+              "err": {
+                "message": "CypressError: Timed out retrying after 5000ms: `cy.wait()` timed out waiting `5000ms` for the 1st request to the route: `registerUser`. No request ever occurred.\n\nhttps://on.cypress.io/wait",
+                "estack": "CypressError: Timed out retrying after 5000ms: `cy.wait()` timed out waiting `5000ms` for the 1st request to the route: `registerUser`. No request ever occurred.\n\nhttps://on.cypress.io/wait\n    at cypressErr (http://localhost:4173/__cypress/runner/cypress_runner.js:164252:18)\n    at Object.errByPath (http://localhost:4173/__cypress/runner/cypress_runner.js:164307:10)\n    at checkForXhr (http://localhost:4173/__cypress/runner/cypress_runner.js:151203:92)\n    at <unknown> (http://localhost:4173/__cypress/runner/cypress_runner.js:151226:28)\n    at tryCatcher (http://localhost:4173/__cypress/runner/cypress_runner.js:18744:23)\n    at Promise.attempt.Promise.try (http://localhost:4173/__cypress/runner/cypress_runner.js:16018:29)\n    at whenStable (http://localhost:4173/__cypress/runner/cypress_runner.js:156168:65)\n    at <unknown> (http://localhost:4173/__cypress/runner/cypress_runner.js:155609:14)\n    at tryCatcher (http://localhost:4173/__cypress/runner/cypress_runner.js:18744:23)\n    at Promise._settlePromiseFromHandler (http://localhost:4173/__cypress/runner/cypress_runner.js:16679:31)\n    at Promise._settlePromise (http://localhost:4173/__cypress/runner/cypress_runner.js:16736:18)\n    at Promise._settlePromise0 (http://localhost:4173/__cypress/runner/cypress_runner.js:16781:10)\n    at Promise._settlePromises (http://localhost:4173/__cypress/runner/cypress_runner.js:16861:18)\n    at Promise._fulfill (http://localhost:4173/__cypress/runner/cypress_runner.js:16805:18)\n    at <unknown> (http://localhost:4173/__cypress/runner/cypress_runner.js:18419:46)\nFrom Your Spec Code:\n    at Context.eval (webpack:///./cypress/e2e/register.cy.ts:36:0)",
+                "diff": null
+              },
+              "uuid": "cdd99fbb-7d65-43c1-8756-f6a0b32b792c",
+              "parentUUID": "b2008974-7631-4a86-9a33-1914c67a36ff",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "cdd99fbb-7d65-43c1-8756-f6a0b32b792c"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 6946,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "results/mochawesome",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

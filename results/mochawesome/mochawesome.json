@@ -5,9 +5,9 @@
     "passes": 3,
     "pending": 0,
     "failures": 0,
-    "start": "2023-08-15T04:06:01.843Z",
-    "end": "2023-08-15T04:06:02.360Z",
-    "duration": 517,
+    "start": "2023-08-15T05:29:16.644Z",
+    "end": "2023-08-15T05:29:17.162Z",
+    "duration": 518,
     "testsRegistered": 3,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "3f66200f-33b6-4d09-8971-60c3c13c3110",
+      "uuid": "44092af8-b120-412a-8a9c-c56122f5a9dd",
       "title": "",
       "fullFile": "cypress\\e2e\\home.cy.ts",
       "file": "cypress\\e2e\\home.cy.ts",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "d3d8aab4-c8d7-46c7-8305-b4067ab4898e",
+          "uuid": "f3345b39-4aa7-40dc-bf28-6b290a878885",
           "title": "Ponyracer",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "should display title on home page",
               "fullTitle": "Ponyracer should display title on home page",
               "timedOut": null,
-              "duration": 214,
+              "duration": 225,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -47,8 +47,8 @@
               "context": null,
               "code": "cy.visit('/');\ncy.contains('h1', 'Ponyracer');\ncy.contains('small', 'Always a pleasure to bet on ponies');\ncy.get('.btn-primary').contains('Races').should('have.attr', 'href', '/races');",
               "err": {},
-              "uuid": "2cdf6901-b433-42e9-9ca2-bae25305ec71",
-              "parentUUID": "d3d8aab4-c8d7-46c7-8305-b4067ab4898e",
+              "uuid": "75f01daa-b9f9-4326-ad2d-1e3cdd0abf31",
+              "parentUUID": "f3345b39-4aa7-40dc-bf28-6b290a878885",
               "isHook": false,
               "skipped": false
             },
@@ -56,7 +56,7 @@
               "title": "should display a navbar",
               "fullTitle": "Ponyracer should display a navbar",
               "timedOut": null,
-              "duration": 96,
+              "duration": 93,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -65,8 +65,8 @@
               "context": null,
               "code": "cy.visit('/');\ncy.get(navbarBrand).contains('PonyRacer').should('have.attr', 'href', '/');\ncy.get(navbarLink).contains('Races').should('have.attr', 'href', '/races');",
               "err": {},
-              "uuid": "06d7fc5e-e7c6-4b20-83b8-0d34d6033766",
-              "parentUUID": "d3d8aab4-c8d7-46c7-8305-b4067ab4898e",
+              "uuid": "ecc1ec0f-33f7-4e51-96da-3ff397c05d7b",
+              "parentUUID": "f3345b39-4aa7-40dc-bf28-6b290a878885",
               "isHook": false,
               "skipped": false
             },
@@ -74,7 +74,7 @@
               "title": "should display a navbar collapsed on small screen",
               "fullTitle": "Ponyracer should display a navbar collapsed on small screen",
               "timedOut": null,
-              "duration": 182,
+              "duration": 178,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -83,22 +83,22 @@
               "context": null,
               "code": "cy.viewport('iphone-6+');\ncy.visit('/');\ncy.contains(navbarBrand, 'PonyRacer');\ncy.get(navbarLink).should('not.be.visible');\n// toggle the navbar\ncy.get('.navbar-toggler').click();\ncy.get(navbarLink).should('be.visible');",
               "err": {},
-              "uuid": "0575ba93-04fc-440e-b652-db81abe03bbd",
-              "parentUUID": "d3d8aab4-c8d7-46c7-8305-b4067ab4898e",
+              "uuid": "0f337b69-69a3-4954-9b44-69815a5648a8",
+              "parentUUID": "f3345b39-4aa7-40dc-bf28-6b290a878885",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "2cdf6901-b433-42e9-9ca2-bae25305ec71",
-            "06d7fc5e-e7c6-4b20-83b8-0d34d6033766",
-            "0575ba93-04fc-440e-b652-db81abe03bbd"
+            "75f01daa-b9f9-4326-ad2d-1e3cdd0abf31",
+            "ecc1ec0f-33f7-4e51-96da-3ff397c05d7b",
+            "0f337b69-69a3-4954-9b44-69815a5648a8"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 492,
+          "duration": 496,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
