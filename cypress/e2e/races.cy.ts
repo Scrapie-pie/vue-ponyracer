@@ -12,6 +12,14 @@ describe('Races', () => {
     startInstant: '2020-02-18T08:02:00Z'
   };
 
+  const user = {
+    id: 1,
+    login: 'cedric',
+    money: 1000,
+    registrationInstant: '2015-12-01T11:00:00Z',
+    token: 'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjF9.5cAW816GUAg3OWKWlsYyXI4w3fDrS5BpnmbyBjVM7lo'
+  };
+
   function startBackend() {
     cy.intercept('GET', 'api/races?status=PENDING', [
       race,
@@ -30,9 +38,21 @@ describe('Races', () => {
     ]).as('getRaces');
   }
 
+  function storeUserInLocalStorage() {
+    localStorage.setItem('rememberMe', JSON.stringify(user));
+  }
+
   beforeEach(() => startBackend());
 
   it('should display a race list', () => {
+    cy.visit('/races');
+    // should redirect to home page as the user is not logged
+    cy.location('pathname')
+      .should('eq', '/')
+      .then(
+        // log the user and try again
+        () => storeUserInLocalStorage()
+      );
     cy.visit('/races');
     // loading
     cy.contains('div', 'Loading...');
@@ -43,6 +63,7 @@ describe('Races', () => {
   });
 
   it('should display a loading error', () => {
+    storeUserInLocalStorage();
     // override the response to have an error
     cy.intercept('GET', 'api/races?status=PENDING', {
       statusCode: 404,
@@ -56,6 +77,7 @@ describe('Races', () => {
   });
 
   it('should display ponies', () => {
+    storeUserInLocalStorage();
     cy.visit('/races');
     cy.wait('@getRaces');
     cy.get('figure').should('have.length', 10);

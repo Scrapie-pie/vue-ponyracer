@@ -1,83 +1,14 @@
 {
-  "numTotalTestSuites": 3,
-  "numPassedTestSuites": 2,
-  "numFailedTestSuites": 1,
+  "numTotalTestSuites": 0,
+  "numPassedTestSuites": 0,
+  "numFailedTestSuites": 0,
   "numPendingTestSuites": 0,
-  "numTotalTests": 3,
+  "numTotalTests": 0,
   "numPassedTests": 0,
-  "numFailedTests": 3,
+  "numFailedTests": 0,
   "numPendingTests": 0,
   "numTodoTests": 0,
-  "startTime": 1692003793669,
-  "success": false,
-  "testResults": [
-    {
-      "assertionResults": [],
-      "startTime": 1692003793669,
-      "endTime": 1692003793669,
-      "status": "passed",
-      "message": "spy.restore is not a function",
-      "name": "D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/components/__tests__/Navbar.spec.ts"
-    },
-    {
-      "assertionResults": [
-        {
-          "ancestorTitles": [
-            "",
-            "App.vue"
-          ],
-          "fullName": " App.vue renders a title",
-          "status": "failed",
-          "title": "renders a title",
-          "duration": 3,
-          "failureMessages": [
-            "Cannot destructure property 'Component' of 'undefined' as it is undefined."
-          ],
-          "location": {
-            "line": 182,
-            "column": 19
-          }
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "App.vue"
-          ],
-          "fullName": " App.vue renders the navbar",
-          "status": "failed",
-          "title": "renders the navbar",
-          "duration": 21,
-          "failureMessages": [
-            "Cannot destructure property 'Component' of 'undefined' as it is undefined."
-          ],
-          "location": {
-            "line": 182,
-            "column": 19
-          }
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "App.vue"
-          ],
-          "fullName": " App.vue renders the races list",
-          "status": "failed",
-          "title": "renders the races list",
-          "duration": 2,
-          "failureMessages": [
-            "Cannot destructure property 'Component' of 'undefined' as it is undefined."
-          ],
-          "location": {
-            "line": 182,
-            "column": 19
-          }
-        }
-      ],
-      "startTime": 1692104354123,
-      "endTime": 1692104354150,
-      "status": "failed",
-      "message": "",
-      "name": "D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/__tests__/App.spec.ts"
-    }
-  ]
+  "startTime": 1692017823093,
+  "success": true,
+  "testResults": []
 }

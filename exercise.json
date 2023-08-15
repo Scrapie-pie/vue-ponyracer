@@ -1,1 +1,1 @@
-{"pack":"20","id":25,"title":"Reactive user score","specs":[{"name":"src/composables/__tests__/UserStore.spec.ts","hash":"d05b13ece0a4863629cb0502d398df781bc0eb55e3a8dc7036aa59c3152e3b70"}]}
+{"pack":"20","id":26,"title":"Protected routes with guards","specs":[{"name":"cypress/e2e/races.cy.ts","hash":"b22508942145dae1eb62963d66bbf3ba8864c41647ff93d433434030a64f7994"},{"name":"src/__tests__/router.spec.ts","hash":"8b9ef9f61ee9b71b4b050b76af01f1ebd2c014c8bc71640dd704a75bd636de73"}]}
