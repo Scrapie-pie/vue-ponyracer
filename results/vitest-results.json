@@ -1,14 +1,191 @@
 {
-  "numTotalTestSuites": 0,
+  "numTotalTestSuites": 22,
   "numPassedTestSuites": 0,
-  "numFailedTestSuites": 0,
+  "numFailedTestSuites": 22,
   "numPendingTestSuites": 0,
   "numTotalTests": 0,
   "numPassedTests": 0,
   "numFailedTests": 0,
   "numPendingTests": 0,
   "numTodoTests": 0,
-  "startTime": 1692086225928,
-  "success": true,
-  "testResults": []
+  "startTime": 1692177991986,
+  "success": false,
+  "testResults": [
+    {
+      "assertionResults": [],
+      "startTime": 1692177991986,
+      "endTime": 1692177991986,
+      "status": "passed",
+      "message": "Failed to load url jest-canvas-mock/lib/window (resolved id: jest-canvas-mock/lib/window) in D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/views/__tests__/vitest-canvas.ts. Does the file exist?",
+      "name": "D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/__tests__/App.spec.ts"
+    },
+    {
+      "assertionResults": [],
+      "startTime": 1692177991986,
+      "endTime": 1692177991986,
+      "status": "passed",
+      "message": "Failed to load url jest-canvas-mock/lib/window (resolved id: jest-canvas-mock/lib/window) in D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/views/__tests__/vitest-canvas.ts. Does the file exist?",
+      "name": "D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/__tests__/router.spec.ts"
+    },
+    {
+      "assertionResults": [],
+      "startTime": 1692177991986,
+      "endTime": 1692177991986,
+      "status": "passed",
+      "message": "Failed to load url jest-canvas-mock/lib/window (resolved id: jest-canvas-mock/lib/window) in D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/views/__tests__/vitest-canvas.ts. Does the file exist?",
+      "name": "D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/components/__tests__/Alert.spec.ts"
+    },
+    {
+      "assertionResults": [],
+      "startTime": 1692177991986,
+      "endTime": 1692177991986,
+      "status": "passed",
+      "message": "Failed to load url jest-canvas-mock/lib/window (resolved id: jest-canvas-mock/lib/window) in D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/views/__tests__/vitest-canvas.ts. Does the file exist?",
+      "name": "D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/components/__tests__/Navbar.spec.ts"
+    },
+    {
+      "assertionResults": [],
+      "startTime": 1692177991986,
+      "endTime": 1692177991986,
+      "status": "passed",
+      "message": "Failed to load url jest-canvas-mock/lib/window (resolved id: jest-canvas-mock/lib/window) in D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/views/__tests__/vitest-canvas.ts. Does the file exist?",
+      "name": "D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/components/__tests__/Pony.spec.ts"
+    },
+    {
+      "assertionResults": [],
+      "startTime": 1692177991986,
+      "endTime": 1692177991986,
+      "status": "passed",
+      "message": "Failed to load url jest-canvas-mock/lib/window (resolved id: jest-canvas-mock/lib/window) in D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/views/__tests__/vitest-canvas.ts. Does the file exist?",
+      "name": "D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/components/__tests__/Race.spec.ts"
+    },
+    {
+      "assertionResults": [],
+      "startTime": 1692177991986,
+      "endTime": 1692177991986,
+      "status": "passed",
+      "message": "Failed to load url jest-canvas-mock/lib/window (resolved id: jest-canvas-mock/lib/window) in D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/views/__tests__/vitest-canvas.ts. Does the file exist?",
+      "name": "D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/composables/__tests__/ChartService.spec.ts"
+    },
+    {
+      "assertionResults": [],
+      "startTime": 1692177991986,
+      "endTime": 1692177991986,
+      "status": "passed",
+      "message": "Failed to load url jest-canvas-mock/lib/window (resolved id: jest-canvas-mock/lib/window) in D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/views/__tests__/vitest-canvas.ts. Does the file exist?",
+      "name": "D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/composables/__tests__/Forms.spec.ts"
+    },
+    {
+      "assertionResults": [],
+      "startTime": 1692177991986,
+      "endTime": 1692177991986,
+      "status": "passed",
+      "message": "Failed to load url jest-canvas-mock/lib/window (resolved id: jest-canvas-mock/lib/window) in D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/views/__tests__/vitest-canvas.ts. Does the file exist?",
+      "name": "D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/composables/__tests__/RaceService.spec.ts"
+    },
+    {
+      "assertionResults": [],
+      "startTime": 1692177991986,
+      "endTime": 1692177991986,
+      "status": "passed",
+      "message": "Failed to load url jest-canvas-mock/lib/window (resolved id: jest-canvas-mock/lib/window) in D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/views/__tests__/vitest-canvas.ts. Does the file exist?",
+      "name": "D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/composables/__tests__/UserStore.spec.ts"
+    },
+    {
+      "assertionResults": [],
+      "startTime": 1692177991986,
+      "endTime": 1692177991986,
+      "status": "passed",
+      "message": "Failed to load url jest-canvas-mock/lib/window (resolved id: jest-canvas-mock/lib/window) in D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/views/__tests__/vitest-canvas.ts. Does the file exist?",
+      "name": "D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/composables/__tests__/WsService.spec.ts"
+    },
+    {
+      "assertionResults": [],
+      "startTime": 1692177991986,
+      "endTime": 1692177991986,
+      "status": "passed",
+      "message": "Failed to load url jest-canvas-mock/lib/window (resolved id: jest-canvas-mock/lib/window) in D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/views/__tests__/vitest-canvas.ts. Does the file exist?",
+      "name": "D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/directives/__tests__/MetaClass.spec.ts"
+    },
+    {
+      "assertionResults": [],
+      "startTime": 1692177991986,
+      "endTime": 1692177991986,
+      "status": "passed",
+      "message": "Failed to load url jest-canvas-mock/lib/window (resolved id: jest-canvas-mock/lib/window) in D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/views/__tests__/vitest-canvas.ts. Does the file exist?",
+      "name": "D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/utils/__tests__/FromNow.spec.ts"
+    },
+    {
+      "assertionResults": [],
+      "startTime": 1692177991986,
+      "endTime": 1692177991986,
+      "status": "passed",
+      "message": "Failed to load url jest-canvas-mock/lib/window (resolved id: jest-canvas-mock/lib/window) in D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/views/__tests__/vitest-canvas.ts. Does the file exist?",
+      "name": "D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/views/__tests__/Bet.spec.ts"
+    },
+    {
+      "assertionResults": [],
+      "startTime": 1692177991986,
+      "endTime": 1692177991986,
+      "status": "passed",
+      "message": "Failed to load url jest-canvas-mock/lib/window (resolved id: jest-canvas-mock/lib/window) in D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/views/__tests__/vitest-canvas.ts. Does the file exist?",
+      "name": "D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/views/__tests__/FinishedRaces.spec.ts"
+    },
+    {
+      "assertionResults": [],
+      "startTime": 1692177991986,
+      "endTime": 1692177991986,
+      "status": "passed",
+      "message": "Failed to load url jest-canvas-mock/lib/window (resolved id: jest-canvas-mock/lib/window) in D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/views/__tests__/vitest-canvas.ts. Does the file exist?",
+      "name": "D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/views/__tests__/Home.spec.ts"
+    },
+    {
+      "assertionResults": [],
+      "startTime": 1692177991986,
+      "endTime": 1692177991986,
+      "status": "passed",
+      "message": "Failed to load url jest-canvas-mock/lib/window (resolved id: jest-canvas-mock/lib/window) in D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/views/__tests__/vitest-canvas.ts. Does the file exist?",
+      "name": "D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/views/__tests__/Live.spec.ts"
+    },
+    {
+      "assertionResults": [],
+      "startTime": 1692177991986,
+      "endTime": 1692177991986,
+      "status": "passed",
+      "message": "Failed to load url jest-canvas-mock/lib/window (resolved id: jest-canvas-mock/lib/window) in D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/views/__tests__/vitest-canvas.ts. Does the file exist?",
+      "name": "D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/views/__tests__/Login.spec.ts"
+    },
+    {
+      "assertionResults": [],
+      "startTime": 1692177991986,
+      "endTime": 1692177991986,
+      "status": "passed",
+      "message": "Failed to load url jest-canvas-mock/lib/window (resolved id: jest-canvas-mock/lib/window) in D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/views/__tests__/vitest-canvas.ts. Does the file exist?",
+      "name": "D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/views/__tests__/PendingRaces.spec.ts"
+    },
+    {
+      "assertionResults": [],
+      "startTime": 1692177991986,
+      "endTime": 1692177991986,
+      "status": "passed",
+      "message": "Failed to load url jest-canvas-mock/lib/window (resolved id: jest-canvas-mock/lib/window) in D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/views/__tests__/vitest-canvas.ts. Does the file exist?",
+      "name": "D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/views/__tests__/Races.spec.ts"
+    },
+    {
+      "assertionResults": [],
+      "startTime": 1692177991986,
+      "endTime": 1692177991986,
+      "status": "passed",
+      "message": "Failed to load url jest-canvas-mock/lib/window (resolved id: jest-canvas-mock/lib/window) in D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/views/__tests__/vitest-canvas.ts. Does the file exist?",
+      "name": "D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/views/__tests__/Register.spec.ts"
+    },
+    {
+      "assertionResults": [],
+      "startTime": 1692177991986,
+      "endTime": 1692177991986,
+      "status": "passed",
+      "message": "Failed to load url jest-canvas-mock/lib/window (resolved id: jest-canvas-mock/lib/window) in D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/views/__tests__/vitest-canvas.ts. Does the file exist?",
+      "name": "D:/Serega/Projects/PERSONAL/become-a-ninja-with-vue/src/views/__tests__/ScoreHistory.spec.ts"
+    }
+  ]
 }

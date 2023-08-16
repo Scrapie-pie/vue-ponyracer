@@ -1,12 +1,12 @@
 <template>
-  <Alert v-if="error" variant="danger" dismissible @dismissed="error = false">A problem occurred during the live.</Alert>
+  <Alert v-if="error" variant="danger" dismissible @dismissed="error = false">{{ t('live.error') }}</Alert>
   <h1>{{ raceModel.name }}</h1>
   <div v-if="raceModel.status === 'FINISHED'">
-    <div v-if="!winners.length">The race is over.</div>
+    <div v-if="!winners.length">{{ t('live.over') }}</div>
     <div v-else>
-      <Alert v-if="betWon" variant="success">You won your bet!</Alert>
-      <Alert v-if="raceModel.betPonyId && !betWon" variant="warning">You lost your bet.</Alert>
-      <div>Most Valuable Ponies</div>
+      <Alert v-if="betWon" variant="success">{{ t('live.won') }}</Alert>
+      <Alert v-if="raceModel.betPonyId && !betWon" variant="warning">{{ t('live.lost') }}</Alert>
+      <div>{{ t('live.mvp') }}</div>
       <div class="row">
         <div class="col" v-for="winner of winners" :key="winner.id" :class="{ selected: winner.id === raceModel.betPonyId }">
           <Pony :ponyModel="winner" />
@@ -15,7 +15,7 @@
     </div>
   </div>
   <div v-else-if="raceModel.status === 'PENDING'">
-    <p>The race will start {{ startInstant }}</p>
+    <p>{{ t('live.start', { startInstant }) }}</p>
     <div class="row">
       <div class="col" v-for="pony of raceModel.ponies" :key="pony.id" :class="{ selected: pony.id === raceModel.betPonyId }">
         <Pony :ponyModel="pony" />
@@ -49,6 +49,7 @@ import { LiveRaceModel, RaceModel } from '@/models/RaceModel';
 import { PonyWithPositionModel } from '@/models/PonyModel';
 import { useRaceService } from '@/composables/RaceService';
 import { useWsService, Connection } from '@/composables/WsService';
+import { useTypedI18n } from '@/composables/TypedI18n';
 
 interface Cheer {
   ponyId: number;
@@ -58,11 +59,13 @@ interface Cheer {
 let connection: Connection | null = null;
 onUnmounted(() => connection?.disconnect());
 
+const { t, locale } = useTypedI18n();
+
 const raceService = useRaceService();
 const route = useRoute();
 const raceId = +route.params.raceId;
 const raceModel = ref<RaceModel>(await raceService.get(raceId));
-const startInstant = computed(() => fromNow(raceModel.value.startInstant));
+const startInstant = computed(() => fromNow(raceModel.value.startInstant, locale.value));
 
 const runningPonies = ref<Array<PonyWithPositionModel>>([]);
 const winners = computed(() => runningPonies.value.filter(pony => pony.position >= 100));

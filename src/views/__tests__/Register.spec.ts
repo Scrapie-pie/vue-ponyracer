@@ -6,6 +6,7 @@ import { createVitestPinia } from '@/__tests__/pinia';
 import { useUserStore } from '@/composables/UserStore';
 import Register from '@/views/Register.vue';
 import Alert from '@/components/Alert.vue';
+import i18n from '@/i18n';
 
 const router = createVitestRouterMock();
 
@@ -13,12 +14,13 @@ async function registerWrapper() {
   injectRouterMock(router);
   const wrapper = mount(Register, {
     global: {
-      plugins: [createVitestPinia()],
+      plugins: [createVitestPinia(), i18n],
       components: {
         Alert
       }
     }
   });
+  i18n.global.locale.value = 'en';
   await flushPromises();
   return wrapper;
 }
@@ -292,5 +294,53 @@ describe('Register.vue', () => {
     await closeButton.trigger('click');
     // The alert should be closable
     expect(wrapper.findComponent(Alert).exists()).toBe(false);
+  });
+
+  test('should display texts in French', async () => {
+    const wrapper = await registerWrapper();
+    i18n.global.locale.value = 'fr';
+    await flushPromises();
+
+    expect(wrapper.get('h1').text()).toBe('Créer un compte');
+    expect(wrapper.get('label').text()).toBe('Identifiant');
+    expect(wrapper.findAll('label')[1].text()).toBe('Mot de passe');
+    expect(wrapper.findAll('label')[2].text()).toBe('Confirmation du mot de passe');
+    expect(wrapper.findAll('label')[3].text()).toBe('Année de naissance');
+
+    const userStore = useUserStore() as MockedObject<ReturnType<typeof useUserStore>>;
+    userStore.register.mockRejectedValue(new Error('Registration failed'));
+
+    const loginInput = wrapper.get('input');
+    await loginInput.setValue('cedric');
+    const passwordInput = wrapper.get('input[type=password]');
+    await passwordInput.setValue('password');
+    const confirmPasswordInput = wrapper.findAll('input[type=password]')[1];
+    await confirmPasswordInput.setValue('password');
+    const birthYearInput = wrapper.get('input[type=number]');
+    await birthYearInput.setValue(1986);
+    await flushPromises();
+
+    const submitButton = wrapper.get('button');
+    await submitButton.trigger('submit');
+    await flushPromises();
+
+    const alert = wrapper.getComponent(Alert);
+    expect(alert.text()).toContain('Essaye avec un autre identifiant');
+
+    await loginInput.setValue('');
+    await flushPromises();
+    expect(wrapper.get('.invalid-feedback').text()).toContain('Le champ identifiant est obligatoire');
+    await loginInput.setValue('cedric');
+    await passwordInput.setValue('');
+    await flushPromises();
+    expect(wrapper.get('.invalid-feedback').text()).toContain('Le champ mot de passe est obligatoire');
+    await passwordInput.setValue('password');
+    await confirmPasswordInput.setValue('');
+    await flushPromises();
+    expect(wrapper.get('.invalid-feedback').text()).toContain('Le champ confirmation du mot de passe est obligatoire');
+    await confirmPasswordInput.setValue('password');
+    await birthYearInput.setValue('');
+    await flushPromises();
+    expect(wrapper.get('.invalid-feedback').text()).toContain('Le champ année de naissance est obligatoire');
   });
 });

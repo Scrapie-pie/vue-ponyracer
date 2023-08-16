@@ -4,6 +4,7 @@ import { defineComponent } from 'vue';
 import FinishedRaces from '@/views/FinishedRaces.vue';
 import Race from '@/components/Race.vue';
 import { RaceModel } from '@/models/RaceModel';
+import i18n from '@/i18n';
 
 const mockRaceService = {
   list: vi.fn()
@@ -25,6 +26,7 @@ describe('FinishedRaces.vue', () => {
     ] as Array<RaceModel>);
     const asyncWrapper = mount(AsyncWrapper, {
       global: {
+        plugins: [i18n],
         stubs: {
           RouterLink: RouterLinkStub
         }

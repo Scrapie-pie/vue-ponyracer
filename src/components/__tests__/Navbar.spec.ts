@@ -4,6 +4,7 @@ import { nextTick } from 'vue';
 import { getRouter, injectRouterMock } from 'vue-router-mock';
 import { createVitestRouterMock } from '@/__tests__/router-mock';
 import { createVitestPinia } from '@/__tests__/pinia';
+import i18n from '@/i18n';
 import Navbar from '@/components/Navbar.vue';
 import { UserModel } from '@/models/UserModel';
 import { useUserStore } from '@/composables/UserStore';
@@ -14,7 +15,7 @@ async function navbarWrapper() {
   injectRouterMock(router);
   const wrapper = mount(Navbar, {
     global: {
-      plugins: [createVitestPinia()],
+      plugins: [createVitestPinia(), i18n],
       stubs: {
         RouterLink: RouterLinkStub
       }
@@ -22,6 +23,7 @@ async function navbarWrapper() {
   });
   const userStore = useUserStore();
   userStore.userModel = null;
+  i18n.global.locale.value = 'en';
   await nextTick();
   return wrapper;
 }
@@ -109,8 +111,8 @@ describe('Navbar.vue', () => {
     userStore.userModel.money = 3000;
     await nextTick();
 
-    // You should display the user's score in a `span` element
-    expect(info.text()).toContain('3000');
+    // You should display the user's score in a `span` element, formatted with `n`
+    expect(info.text()).toContain('3,000');
   });
 
   test('should logout the user', async () => {
@@ -142,5 +144,26 @@ describe('Navbar.vue', () => {
     expect(userStore.logoutAndForget).toHaveBeenCalled();
     // and redirect to the home page
     expect(mockRouter.push).toHaveBeenCalled();
+  });
+
+  test('should switch the locale', async () => {
+    const wrapper = await navbarWrapper();
+    const userStore = useUserStore();
+    userStore.userModel = {
+      login: 'cedric',
+      money: 200,
+      birthYear: 1986,
+      password: ''
+    } as UserModel;
+    await nextTick();
+    const options = wrapper.findAll('option');
+    // You should have one option per available locale
+    expect(options.length).toBe(2);
+    const select = wrapper.get('select');
+    await select.setValue('fr');
+    const links = wrapper.findAllComponents(RouterLinkStub);
+    const racesLink = links[1];
+    // The races link should be in French
+    expect(racesLink.text()).toBe('Courses');
   });
 });

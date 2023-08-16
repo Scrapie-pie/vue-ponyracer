@@ -1,0 +1,56 @@
+{
+  "app": {
+    "error": "An error occurred while loading.",
+    "loading": "Loading..."
+  },
+  "bet": {
+    "watch": "Watch live!",
+    "failed": "The race is already started or finished"
+  },
+  "home": {
+    "title": "Ponyracer",
+    "tagline": "Always a pleasure to bet on ponies",
+    "login": "Login",
+    "register": "Register",
+    "races": "Races"
+  },
+  "live": {
+    "error": "A problem occurred during the live.",
+    "over": "The race is over.",
+    "won": "You won your bet!",
+    "lost": "You lost your bet.",
+    "mvp": "Most Valuable Ponies",
+    "start": "The race will start { startInstant }"
+  },
+  "login": {
+    "title": "Log in",
+    "failed": "Nope, try again",
+    "login": "Login",
+    "password": "Password",
+    "go": "Log me in"
+  },
+  "navbar": {
+    "races": "Races",
+    "language": "Language"
+  },
+  "pending": {
+    "bet": "Bet on { name }"
+  },
+  "register": {
+    "title": "Register",
+    "failed": "Try again with another login.",
+    "login": "Login",
+    "password": "Password",
+    "confirm": "Password confirmation",
+    "birth-year": "Birth year",
+    "go": "Let's go!"
+  },
+  "races": {
+    "title": "Races",
+    "pending": "Pending races",
+    "finished": "Finished races"
+  },
+  "score": {
+    "title": "Score history"
+  }
+}

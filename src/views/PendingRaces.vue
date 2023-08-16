@@ -1,7 +1,9 @@
 <template>
   <div class="mb-3" v-for="race in races" :key="race.id">
     <Race :raceModel="race" />
-    <RouterLink :to="{ name: 'bet', params: { raceId: race.id } }" class="btn btn-primary"> Bet on {{ race.name }} </RouterLink>
+    <RouterLink :to="{ name: 'bet', params: { raceId: race.id } }" class="btn btn-primary">
+      {{ t('pending.bet', { name: race.name }) }}
+    </RouterLink>
   </div>
 </template>
 
@@ -10,7 +12,9 @@ import { ref } from 'vue';
 import { RaceModel } from '@/models/RaceModel';
 import { useRaceService } from '@/composables/RaceService';
 import Race from '@/components/Race.vue';
+import { useTypedI18n } from '@/composables/TypedI18n';
 
+const { t } = useTypedI18n();
 const raceService = useRaceService();
 const races = ref<Array<RaceModel>>(await raceService.list('PENDING'));
 </script>

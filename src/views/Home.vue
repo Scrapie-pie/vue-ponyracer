@@ -2,18 +2,18 @@
   <div class="text-center" style="margin-top: 100px">
     <div>
       <h1>
-        Ponyracer
-        <small>Always a pleasure to bet on ponies</small>
+        {{ t('home.title') }}
+        <small>{{ t('home.tagline') }}</small>
       </h1>
     </div>
 
     <Transition name="fade" mode="out-in">
       <div v-if="!userModel">
-        <RouterLink to="/login" class="btn btn-large btn-primary me-2">Login</RouterLink>
-        <RouterLink to="/register" class="btn btn-large btn-primary">Register</RouterLink>
+        <RouterLink to="/login" class="btn btn-large btn-primary me-2">{{ t('home.login') }}</RouterLink>
+        <RouterLink to="/register" class="btn btn-large btn-primary">{{ t('home.register') }}</RouterLink>
       </div>
       <div v-else>
-        <RouterLink to="/races" class="btn btn-large btn-primary">Races</RouterLink>
+        <RouterLink to="/races" class="btn btn-large btn-primary">{{ t('home.races') }}</RouterLink>
       </div>
     </Transition>
   </div>
@@ -22,8 +22,10 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
 import { useUserStore } from '@/composables/UserStore';
+import { useTypedI18n } from '@/composables/TypedI18n';
 
 const { userModel } = storeToRefs(useUserStore());
+const { t } = useTypedI18n();
 </script>
 
 <style scoped>

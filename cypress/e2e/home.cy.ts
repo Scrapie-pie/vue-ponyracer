@@ -77,7 +77,7 @@ describe('Ponyracer', () => {
 
     cy.get(navbarLink).contains('Races').should('have.attr', 'href', '/races');
 
-    cy.get('#current-user').should('contain', 'cedric').and('contain', '1000');
+    cy.get('#current-user').should('contain', 'cedric').and('contain', '1,000');
 
     cy.get('.btn-primary').contains('Races').should('have.attr', 'href', '/races');
   });
@@ -88,7 +88,7 @@ describe('Ponyracer', () => {
     cy.wait('@getRaces');
 
     // user stored should be displayed
-    cy.get('#current-user').should('contain', 'cedric').and('contain', '1000');
+    cy.get('#current-user').should('contain', 'cedric').and('contain', '1,000');
 
     // logout
     cy.get('span.fa.fa-power-off').click();
@@ -112,7 +112,7 @@ describe('Ponyracer', () => {
     cy.visit('/');
 
     // user stored should be displayed
-    cy.get('#current-user').should('contain', 'cedric').and('contain', '1000');
+    cy.get('#current-user').should('contain', 'cedric').and('contain', '1,000');
 
     // logout
     cy.get('span.fa.fa-power-off').click();

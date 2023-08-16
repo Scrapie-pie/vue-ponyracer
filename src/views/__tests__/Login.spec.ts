@@ -6,6 +6,7 @@ import { createVitestPinia } from '@/__tests__/pinia';
 import Login from '@/views/Login.vue';
 import Alert from '@/components/Alert.vue';
 import { useUserStore } from '@/composables/UserStore';
+import i18n from '@/i18n';
 
 const router = createVitestRouterMock();
 
@@ -13,12 +14,13 @@ async function loginWrapper() {
   injectRouterMock(router);
   const wrapper = mount(Login, {
     global: {
-      plugins: [createVitestPinia()],
+      plugins: [createVitestPinia(), i18n],
       components: {
         Alert
       }
     }
   });
+  i18n.global.locale.value = 'en';
   await flushPromises();
   return wrapper;
 }
@@ -172,5 +174,40 @@ describe('Login.vue', () => {
     await closeButton.trigger('click');
     // The alert should be closable
     expect(wrapper.findComponent(Alert).exists()).toBe(false);
+  });
+
+  test('should display texts in French', async () => {
+    const wrapper = await loginWrapper();
+    i18n.global.locale.value = 'fr';
+    await flushPromises();
+
+    expect(wrapper.get('h1').text()).toBe('Se connecter');
+    expect(wrapper.get('label').text()).toBe('Identifiant');
+    expect(wrapper.findAll('label')[1].text()).toBe('Mot de passe');
+
+    const userStore = useUserStore() as MockedObject<ReturnType<typeof useUserStore>>;
+    userStore.authenticate.mockRejectedValue(new Error('Authentication failed'));
+
+    const loginInput = wrapper.get('input');
+    await loginInput.setValue('cedric');
+    const passwordInput = wrapper.get('input[type=password]');
+    await passwordInput.setValue('password');
+    await flushPromises();
+    const submitButton = wrapper.get('button');
+    expect(submitButton.text()).toBe('Se connecter');
+    await submitButton.trigger('submit');
+    await flushPromises();
+
+    expect(wrapper.getComponent(Alert).text()).toBe('Non, essaye encore');
+
+    await loginInput.setValue('');
+    await flushPromises();
+    const loginInputError = wrapper.get('.invalid-feedback');
+    expect(loginInputError.text()).toContain('Le champ identifiant est obligatoire');
+    await loginInput.setValue('cedric');
+    await passwordInput.setValue('');
+    await flushPromises();
+    const passwordInputError = wrapper.get('.invalid-feedback');
+    expect(passwordInputError.text()).toContain('Le champ mot de passe est obligatoire');
   });
 });

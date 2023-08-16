@@ -7,6 +7,7 @@ import Bet from '@/views/Bet.vue';
 import Pony from '@/components/Pony.vue';
 import Alert from '@/components/Alert.vue';
 import { RaceModel } from '@/models/RaceModel';
+import i18n from '@/i18n';
 
 const mockRaceService = {
   get: vi.fn(),
@@ -34,11 +35,13 @@ async function betWrapper() {
       components: {
         Alert
       },
+      plugins: [i18n],
       stubs: {
         RouterLink: RouterLinkStub
       }
     }
   });
+  i18n.global.locale.value = 'en';
   await flushPromises();
   return wrapper.getComponent(Bet);
 }
@@ -218,5 +221,28 @@ describe('Bet.vue', () => {
     await message.get('button').trigger('click');
     // the error message should not be displayed anymore
     expect(wrapper.findComponent(Alert).exists()).toBe(false);
+  });
+
+  test('should display texts in French', async () => {
+    const race: RaceModel = {
+      id: 12,
+      name: 'Paris',
+      ponies: [
+        { id: 1, name: 'Gentle Pie', color: 'YELLOW' },
+        { id: 2, name: 'Big Soda', color: 'ORANGE' }
+      ],
+      startInstant: '2020-02-18T08:02:00Z',
+      status: 'PENDING'
+    };
+    mockRaceService.get.mockResolvedValue(race);
+    mockRaceService.bet.mockRejectedValue(new Error('Oops'));
+
+    const wrapper = await betWrapper();
+    i18n.global.locale.value = 'fr';
+    await flushPromises();
+    await wrapper.getComponent(Pony).vm.$emit('ponySelected');
+    await flushPromises();
+    const message = wrapper.getComponent(Alert);
+    expect(message.text()).toContain('La course a déjà commencé ou est terminée');
   });
 });

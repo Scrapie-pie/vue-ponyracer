@@ -3,6 +3,7 @@ import { mount } from '@vue/test-utils';
 import Race from '@/components/Race.vue';
 import Pony from '@/components/Pony.vue';
 import { RaceModel } from '@/models/RaceModel';
+import i18n from '../../i18n';
 
 describe('Race.vue', () => {
   test('should display a race name and its ponies', () => {
@@ -20,6 +21,9 @@ describe('Race.vue', () => {
     } as RaceModel;
 
     const wrapper = mount(Race, {
+      global: {
+        plugins: [i18n]
+      },
       props: {
         raceModel
       }

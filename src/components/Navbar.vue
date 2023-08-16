@@ -8,16 +8,23 @@
       <div id="navbar" class="navbar-collapse" :class="{ collapse: navbarCollapsed }">
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            <RouterLink to="/races" v-if="userModel" class="nav-link">Races</RouterLink>
+            <RouterLink to="/races" v-if="userModel" class="nav-link">{{ t('navbar.races') }}</RouterLink>
           </li>
         </ul>
+        <div class="navbar-nav">
+          <select class="form-select form-select-sm" :aria-label="t('navbar.language')" v-model="locale">
+            <option v-for="availableLocale in availableLocales" :value="availableLocale" :key="availableLocale">
+              {{ availableLocale }}
+            </option>
+          </select>
+        </div>
         <ul class="navbar-nav" v-if="userModel">
           <li class="nav-item">
             <RouterLink :to="{ name: 'score' }" class="nav-link">
               <span id="current-user" class="me-2">
                 {{ userModel.login }}
                 <span class="fa fa-star"></span>
-                {{ userModel.money }}
+                {{ n(userModel.money!) }}
               </span>
             </RouterLink>
           </li>
@@ -37,6 +44,9 @@ import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { useUserStore } from '@/composables/UserStore';
+import { useTypedI18n } from '@/composables/TypedI18n';
+
+const { t, locale, availableLocales, n } = useTypedI18n();
 
 const navbarCollapsed = ref(true);
 function toggleNavbar() {

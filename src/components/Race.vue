@@ -14,10 +14,13 @@
 import { computed } from 'vue';
 import { RaceModel } from '@/models/RaceModel';
 import fromNow from '@/utils/FromNow';
+import { useTypedI18n } from '@/composables/TypedI18n';
 import Pony from '@/components/Pony.vue';
 
 const props = defineProps<{
   raceModel: RaceModel;
 }>();
-const startInstant = computed(() => fromNow(props.raceModel.startInstant));
+
+const { locale } = useTypedI18n();
+const startInstant = computed(() => fromNow(props.raceModel.startInstant, locale.value));
 </script>

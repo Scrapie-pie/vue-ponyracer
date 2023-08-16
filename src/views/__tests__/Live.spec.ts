@@ -8,6 +8,7 @@ import Pony from '@/components/Pony.vue';
 import Alert from '@/components/Alert.vue';
 import { LiveRaceModel, RaceModel } from '@/models/RaceModel';
 import { PonyWithPositionModel } from '@/models/PonyModel';
+import i18n from '@/i18n';
 
 const mockRaceService = {
   get: vi.fn(),
@@ -40,9 +41,11 @@ async function liveWrapper() {
     global: {
       components: {
         Alert
-      }
+      },
+      plugins: [i18n]
     }
   });
+  i18n.global.locale.value = 'en';
   await flushPromises();
   return wrapper;
 }
@@ -507,5 +510,24 @@ describe('Live.vue', () => {
       // Then we should not have a boost triggered
       expect(mockRaceService.boost).not.toHaveBeenCalledWith(12, 1);
     });
+  });
+
+  test('should display texts in French', async () => {
+    const race: RaceModel = {
+      id: 12,
+      name: 'Paris',
+      ponies: [
+        { id: 1, name: 'Gentle Pie', color: 'YELLOW' },
+        { id: 2, name: 'Big Soda', color: 'ORANGE' }
+      ],
+      startInstant: '2020-02-18T08:02:00Z',
+      status: 'PENDING'
+    };
+    mockRaceService.get.mockResolvedValue(race);
+
+    const wrapper = await liveWrapper();
+    i18n.global.locale.value = 'fr';
+    await flushPromises();
+    expect(wrapper.get('p').text()).toContain('La course démarre');
   });
 });

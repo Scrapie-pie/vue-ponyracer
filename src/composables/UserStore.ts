@@ -1,6 +1,6 @@
 import { ref, watchEffect } from 'vue';
 import { defineStore } from 'pinia';
-import axios, {AxiosRequestConfig, AxiosResponse} from 'axios';
+import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { UserModel, ScoreHistoryModel } from '@/models/UserModel';
 import { Connection, useWsService } from '@/composables/WsService';
 
@@ -47,7 +47,10 @@ export const useUserStore = defineStore('user', () => {
     },
 
     async authenticate(credentials: { login: string; password: string }): Promise<UserModel> {
-      const response: AxiosResponse = await axios.post<UserModel>('https://ponyracer.ninja-squad.com/api/users/authentication', credentials);
+      const response: AxiosResponse = await axios.post<UserModel>(
+        'https://ponyracer.ninja-squad.com/api/users/authentication',
+        credentials
+      );
       storeLoggedInUser(response.data);
       return response.data;
     },

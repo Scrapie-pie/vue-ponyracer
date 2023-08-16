@@ -8,6 +8,7 @@ import { createVitestPinia } from './pinia';
 import App from '@/App.vue';
 import Navbar from '@/components/Navbar.vue';
 import Alert from '@/components/Alert.vue';
+import i18n from '@/i18n';
 
 const HelloComponent = defineComponent({
   async setup() {
@@ -24,7 +25,7 @@ const ErrorComponent = defineComponent({
 });
 let mockRouter: RouterMock;
 
-function appWrapper(stubs = {}) {
+async function appWrapper(stubs = {}) {
   mockRouter = createVitestRouterMock({
     routes: [
       { path: '/', component: HelloComponent },
@@ -32,12 +33,13 @@ function appWrapper(stubs = {}) {
     ]
   });
   injectRouterMock(mockRouter);
-  return mount(App, {
+  const wrapper = mount(App, {
     global: {
       plugins: [
         createVitestPinia({
           stubActions: false
-        })
+        }),
+        i18n
       ],
       components: {
         Alert
@@ -45,18 +47,21 @@ function appWrapper(stubs = {}) {
       stubs
     }
   });
+  i18n.global.locale.value = 'en';
+  await flushPromises();
+  return wrapper;
 }
 
 describe('App.vue', () => {
-  test('renders the navbar', () => {
-    const wrapper = appWrapper();
+  test('renders the navbar', async () => {
+    const wrapper = await appWrapper();
     const navbar = wrapper.findComponent(Navbar);
     // Maybe you forgot to add <Navbar/> in your App.vue component
     expect(navbar.exists()).toBe(true);
   });
 
   test('renders the router view inside a Suspense component', async () => {
-    const wrapper = appWrapper({
+    const wrapper = await appWrapper({
       RouterView: false
     });
     await mockRouter.push('/');
@@ -70,7 +75,7 @@ describe('App.vue', () => {
 
   test('renders an error if router view does not load', async () => {
     vi.spyOn(console, 'warn').mockReturnValue();
-    const wrapper = appWrapper({
+    const wrapper = await appWrapper({
       Alert: defineComponent({
         // eslint-disable-next-line vue/require-prop-types
         props: ['variant', 'dismissible'],
@@ -91,5 +96,17 @@ describe('App.vue', () => {
     const alert = wrapper.findComponent(Alert);
     await alert.vm.$emit('dismissed');
     expect(wrapper.html()).not.toContain('An error occurred');
+  });
+
+  test('should display texts in French', async () => {
+    vi.spyOn(console, 'warn').mockReturnValue();
+    const wrapper = await appWrapper({
+      RouterView: false
+    });
+    i18n.global.locale.value = 'fr';
+    await mockRouter.push('/error');
+    expect(wrapper.html()).toContain('Chargement...');
+    await flushPromises();
+    expect(wrapper.html()).toContain('Une erreur est survenue');
   });
 });

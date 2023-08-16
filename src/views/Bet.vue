@@ -1,10 +1,8 @@
 <template>
   <h1>{{ raceModel.name }}</h1>
   <p>{{ startInstant }}</p>
-  <RouterLink :to="{ name: 'live', params: { raceId: raceModel.id } }" class="btn btn-large btn-primary">Watch live!</RouterLink>
-  <Alert class="mt-2" v-if="betFailed" variant="danger" dismissible @dismissed="betFailed = false">
-    The race is already started or finished
-  </Alert>
+  <RouterLink :to="{ name: 'live', params: { raceId: raceModel.id } }" class="btn btn-large btn-primary">{{ t('bet.watch') }}</RouterLink>
+  <Alert class="mt-2" v-if="betFailed" variant="danger" dismissible @dismissed="betFailed = false">{{ t('bet.failed') }}</Alert>
   <div class="row">
     <div class="col" v-for="pony of raceModel.ponies" :key="pony.id" :class="{ selected: isPonySelected(pony) }">
       <Pony :ponyModel="pony" @ponySelected="placeOrCancelBet(pony)" />
@@ -20,6 +18,9 @@ import fromNow from '@/utils/FromNow';
 import { RaceModel } from '@/models/RaceModel';
 import { PonyModel } from '@/models/PonyModel';
 import { useRaceService } from '@/composables/RaceService';
+import { useTypedI18n } from '@/composables/TypedI18n';
+
+const { t, locale } = useTypedI18n();
 
 const route = useRoute();
 const raceId = +route.params.raceId;
@@ -27,7 +28,7 @@ const raceId = +route.params.raceId;
 const raceService = useRaceService();
 const raceModel = ref<RaceModel>(await raceService.get(raceId));
 
-const startInstant = computed(() => fromNow(raceModel.value!.startInstant));
+const startInstant = computed(() => fromNow(raceModel.value!.startInstant, locale.value));
 
 function isPonySelected(pony: PonyModel): boolean {
   return pony.id === raceModel.value.betPonyId;

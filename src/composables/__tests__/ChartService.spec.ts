@@ -1,4 +1,5 @@
 import { describe, expect, test } from 'vitest';
+import { TimeScaleOptions } from 'chart.js';
 import { useChartService } from '@/composables/ChartService';
 import { ScoreHistoryModel } from '@/models/UserModel';
 
@@ -27,13 +28,28 @@ describe('useChartService', () => {
 
   test('should build options', () => {
     const chartService = useChartService();
-    const options = chartService.getOptions();
+    const locale = 'en' as const;
+    const options = chartService.getOptions(locale);
     expect(options).toEqual({
+      locale: 'en',
       scales: {
         x: {
-          type: 'time'
+          type: 'time',
+          adapters: {
+            date: {
+              locale: null
+            }
+          }
         }
       }
     });
+  });
+
+  test('should build french options', () => {
+    const chartService = useChartService();
+    const locale = 'fr' as const;
+    const options = chartService.getOptions(locale);
+    expect(options.locale).toEqual('fr');
+    expect((options.scales!.x! as TimeScaleOptions).adapters.date as { locale: unknown }).not.toBeNull();
   });
 });

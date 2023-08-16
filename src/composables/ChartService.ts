@@ -1,5 +1,6 @@
 import { ChartData, ChartOptions } from 'chart.js';
 import { ScoreHistoryModel } from '@/models/UserModel';
+import { fr } from 'date-fns/locale';
 
 export function useChartService() {
   return {
@@ -16,13 +17,19 @@ export function useChartService() {
             data: history.map(event => event.money)
           }
         ]
-      } as ChartData;
+      };
     },
-    getOptions(): ChartOptions {
+    getOptions(locale: 'en' | 'fr'): ChartOptions {
       return {
+        locale,
         scales: {
           x: {
-            type: 'time'
+            type: 'time',
+            adapters: {
+              date: {
+                locale: locale === 'fr' ? fr : null
+              }
+            }
           }
         }
       };

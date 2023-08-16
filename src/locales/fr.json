@@ -1,0 +1,56 @@
+{
+  "app": {
+    "error": "Une erreur est survenue pendant le chargement.",
+    "loading": "Chargement..."
+  },
+  "bet": {
+    "watch": "Voir en live\u00a0!",
+    "failed": "La course a déjà commencé ou est terminée"
+  },
+  "home": {
+    "title": "Ponyracer",
+    "tagline": "Toujours un plaisir de parier sur des poneys",
+    "login": "Se connecter",
+    "register": "S'enregistrer",
+    "races": "Courses"
+  },
+  "live": {
+    "error": "Une erreur est survenue pendant la retransmission.",
+    "over": "La course est terminée.",
+    "won": "Tu as gagné ton pari\u00a0!",
+    "lost": "Tu as perdu ton pari.",
+    "mvp": "Meilleur Poney",
+    "start": "La course démarre { startInstant }"
+  },
+  "login": {
+    "title": "Se connecter",
+    "failed": "Non, essaye encore",
+    "login": "Identifiant",
+    "password": "Mot de passe",
+    "go": "Se connecter"
+  },
+  "navbar": {
+    "races": "Courses",
+    "language": "Langue"
+  },
+  "pending": {
+    "bet": "Parier sur { name }"
+  },
+  "register": {
+    "title": "Créer un compte",
+    "failed": "Essaye avec un autre identifiant",
+    "login": "Identifiant",
+    "password": "Mot de passe",
+    "confirm": "Confirmation du mot de passe",
+    "birth-year": "Année de naissance",
+    "go": "C'est parti\u00a0!"
+  },
+  "races": {
+    "title": "Courses",
+    "pending": "Prochaines courses",
+    "finished": "Courses terminées"
+  },
+  "score": {
+    "title": "Historique du score"
+  }
+}
