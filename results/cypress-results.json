@@ -1,11 +1,11 @@
 {
   "stats": {
-    "suites": 7,
-    "tests": 18,
-    "passes": 18,
+    "suites": 8,
+    "tests": 19,
+    "passes": 19,
     "pending": 0,
     "failures": 0,
-    "testsRegistered": 18,
+    "testsRegistered": 19,
     "passPercent": 100,
     "pendingPercent": 0,
     "other": 0,
@@ -13,8 +13,8 @@
     "skipped": 0,
     "hasSkipped": false,
     "start": "2023-08-16T09:21:15.450Z",
-    "end": "2023-08-16T09:21:46.493Z",
-    "duration": 31043
+    "end": "2023-08-16T09:50:26.441Z",
+    "duration": 1750991
   },
   "results": [
     {
@@ -560,6 +560,64 @@
           "pending": [],
           "skipped": [],
           "duration": 309,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "3cc80225-af61-4b39-9e83-e6373b1e1f3b",
+      "title": "",
+      "fullFile": "cypress\\e2e\\score-history.cy.ts",
+      "file": "cypress\\e2e\\score-history.cy.ts",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "38d686cf-d3fc-4b9d-b21f-261140fa8e1c",
+          "title": "Money history",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should display the score history of the user",
+              "fullTitle": "Money history should display the score history of the user",
+              "timedOut": null,
+              "duration": 428,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "storeUserInLocalStorage();\ncy.visit('/score-history');\ncy.wait('@history');\ncy.get('h1').should('contain', 'Score history');\ncy.get('canvas').should('exist');",
+              "err": {},
+              "uuid": "543eb179-3f68-4533-bf67-997c1c6d9941",
+              "parentUUID": "38d686cf-d3fc-4b9d-b21f-261140fa8e1c",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "543eb179-3f68-4533-bf67-997c1c6d9941"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 428,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
